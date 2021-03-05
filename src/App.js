@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import sponsorSignUp from "./Pages/sponsorSignUp";
+import findSponsors from "./Pages/findSponsors";
+import findSponsees from "./Pages/findSponsees";
+import sponsorLogin from "./Pages/sponsorLogin";
+import sponseeSignUp from "./Pages/sponseeSignUp";
+import sponseeLogin from "./Pages/sponseeLogin";
+import sponsorDetails from "./Pages/sponsorDetails";
+import sponseeDetails from "./Pages/sponseeDetails";
+import Home from "./Pages/home";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <section className="container">
+                <Link to="/"/>
+            </section>
+            <Switch>
+                <Route exact path="/" component={sponsorSignUp}/>
+                <Route path="/sponsorSignUp" component={sponsorSignUp}/>
+                <Route path="/findSponsors" component={findSponsors}/>
+                <Route path="/findSponsees" component={findSponsees}/>
+                <Route path="/sponsorLogin" component={sponsorLogin}/>
+                <Route path="/sponseeLogin" component={sponseeLogin}/>
+                <Route path="/sponseeSignUp" component={sponseeSignUp}/>
+                <Route path="/sponsorDetails" component={sponsorDetails}/>
+                <Route path="/sponseeDetails" component={sponseeDetails}/>
+            </Switch>
+        </Router>
+    );
 }
 
 export default App;

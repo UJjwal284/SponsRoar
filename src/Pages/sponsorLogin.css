@@ -1,0 +1,13 @@
+#panel {
+    margin: 50px auto 100px auto;
+    width: fit-content;
+    padding: 10px;
+}
+
+.main {
+    background-color: #f8f8f8;
+}
+
+.fp {
+    font-size: 14px;
+}

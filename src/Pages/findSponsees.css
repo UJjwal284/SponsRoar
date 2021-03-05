@@ -1,0 +1,34 @@
+.main {
+    background-color: #f5f5f5;
+}
+
+.filter {
+    width: 200px;
+    height: fit-content;
+}
+
+hl {
+    background-color: black;
+}
+
+.ca:hover {
+    box-shadow: gray 0 0 5px;
+    cursor: pointer;
+}
+
+.li > div > p {
+    margin-bottom: 0;
+}
+
+.li > div {
+    margin-right: 40px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.bt1 {
+    background: white;
+    border-color: #858585;
+}

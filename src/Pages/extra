@@ -1,0 +1,53 @@
+const handleLogin = () => {
+        Firebase.auth().signInWithEmailAndPassword(email, password).catch(err => {
+            switch (err.code) {
+                case "auth/invalid-email":
+                case "auth/user-disabled":
+                case "auth/user-not-found":
+                    setEmailError(err.message);
+                    break;
+                case "auth/wrong-password":
+                    setPasswordError(err.message);
+                    break;
+            }
+        })
+    }
+
+    const handleLogOut = () => {
+            Firebase.auth().signOut();
+        }
+
+
+    const authListener = () => {
+        Firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser("");
+            }
+        });
+    };
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+        authListener();
+    }, []);
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [user, setUser] = useState("");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [email, setEmail] = useState("");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [password, setPassword] = useState("");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [emailError, setEmailError] = useState("");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [passwordError, setPasswordError] = useState("");
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [hasAccount, setHasAccount] = useState(false);
+
+        // const todoRef = db.ref("/users/" + Firebase.auth().currentUser.uid);
+                // todoRef.set({
+                //     Name: name,
+                //     Email: email
+                // });
