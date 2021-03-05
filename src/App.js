@@ -9,6 +9,7 @@ import sponseeSignUp from "./Pages/sponseeSignUp";
 import sponseeLogin from "./Pages/sponseeLogin";
 import sponsorDetails from "./Pages/sponsorDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
+import sponsorDashboard from "./Pages/sponsorDashboard";
 import Home from "./Pages/home";
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
                 <Link to="/"/>
             </section>
             <Switch>
-                <Route exact path="/" component={sponsorSignUp}/>
+                <Route exact path="/" component={Home}/>
                 <Route path="/sponsorSignUp" component={sponsorSignUp}/>
                 <Route path="/findSponsors" component={findSponsors}/>
                 <Route path="/findSponsees" component={findSponsees}/>
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/sponseeSignUp" component={sponseeSignUp}/>
                 <Route path="/sponsorDetails" component={sponsorDetails}/>
                 <Route path="/sponseeDetails" component={sponseeDetails}/>
+                <Route path="/sponsorDashboard" component={sponsorDashboard}/>
             </Switch>
         </Router>
     );

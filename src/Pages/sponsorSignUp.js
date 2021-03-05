@@ -15,6 +15,16 @@ function sponsorSignUp() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [password, setPassword] = useState("");
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const history = useHistory();
+    const goToSponsorLogin = () => {
+        history.push("/sponsorLogin");
+    }
+
+    const goToSponsorDashboard = () => {
+        history.push("/sponsorDashboard");
+    }
+
     let handleSignUp = () => {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
@@ -26,14 +36,9 @@ function sponsorSignUp() {
                 Name: name,
                 Email: email
             }),
+            goToSponsorDashboard()
         );
 
-    }
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const history = useHistory();
-    const goToSponsorLogin = () => {
-        history.push("/sponsorLogin");
     }
 
     return (
