@@ -13,11 +13,6 @@ const handleLogin = () => {
         })
     }
 
-    const handleLogOut = () => {
-            Firebase.auth().signOut();
-        }
-
-
     const authListener = () => {
         Firebase.auth().onAuthStateChanged((user) => {
             if (user) {

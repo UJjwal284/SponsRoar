@@ -4,6 +4,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
 import $ from "jquery";
+import Firebase from "../Components/Firebase";
 
 function Home() {
     const history = useHistory();
@@ -23,15 +24,22 @@ function Home() {
         history.push("/sponseeSignUp");
     }
 
-    $(document).ready(function () {
-        if (localStorage.getItem("userUID") !== null) {
+    const goToFindSponsees = () => {
+        history.push("/findSponsees");
+    }
+
+    const goToFindSponsors = () => {
+        history.push("/findSponsors");
+    }
+
+    Firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
             $('.bt1').hide();
             $('.bt2').hide();
             $('.bt3').show();
         } else {
-            $('.bt1').show();
-            $('.bt2').show();
             $('.bt3').hide();
+
         }
     });
 
@@ -52,7 +60,8 @@ function Home() {
                             <button className="btn btn-primary font-weight-bold ml-3 bt2"
                                     onClick={goToSponsorLogin}>Login
                             </button>
-                            <button className="btn btn-primary font-weight-bold ml-0 bt3">Find
+                            <button className="btn btn-primary font-weight-bold ml-0 bt3"
+                                    onClick={goToFindSponsees}>Find
                                 Sponsees
                             </button>
                         </div>
@@ -68,7 +77,9 @@ function Home() {
                             <button className="btn btn-primary font-weight-bold ml-3 bt2"
                                     onClick={goToSponseeLogin}>Login
                             </button>
-                            <button className="btn btn-primary font-weight-bold ml-0 bt3">Find Sponsors</button>
+                            <button className="btn btn-primary font-weight-bold ml-0 bt3"
+                                    onClick={goToFindSponsors}>Find Sponsors
+                            </button>
                         </div>
                     </div>
                 </div>

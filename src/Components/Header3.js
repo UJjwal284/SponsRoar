@@ -17,7 +17,9 @@ function Header3() {
     }
 
     const logOut = () => {
-        Firebase.auth().signOut();
+        // eslint-disable-next-line no-restricted-globals
+        event.preventDefault();
+        Firebase.auth().signOut().then(r => goToHome());
     }
     return (
         <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
