@@ -3,6 +3,7 @@ import './home.css';
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
+import $ from "jquery";
 
 function Home() {
     const history = useHistory();
@@ -21,6 +22,19 @@ function Home() {
     const goToSponseeSignUp = () => {
         history.push("/sponseeSignUp");
     }
+
+    $(document).ready(function () {
+        if (localStorage.getItem("userUID") !== null) {
+            $('.bt1').hide();
+            $('.bt2').hide();
+            $('.bt3').show();
+        } else {
+            $('.bt1').show();
+            $('.bt2').show();
+            $('.bt3').hide();
+        }
+    });
+
     return (
         <div>
             <Header/>
@@ -33,11 +47,14 @@ function Home() {
                         <h2>For Sponsors</h2>
                         <p>Start sponsoring great events and individuals of right choice.</p>
                         <div className="mt-5">
-                            <button className="btn btn-light font-weight-bold" onClick={goToSponsorSignUp}>Sign Up
+                            <button className="btn btn-light font-weight-bold bt1" onClick={goToSponsorSignUp}>Sign Up
                             </button>
-                            <button className="btn btn-primary font-weight-bold ml-3" onClick={goToSponsorLogin}>Login
+                            <button className="btn btn-primary font-weight-bold ml-3 bt2"
+                                    onClick={goToSponsorLogin}>Login
                             </button>
-                            <button className="btn btn-primary font-weight-bold ml-3" hidden>Find Sponsees</button>
+                            <button className="btn btn-primary font-weight-bold ml-0 bt3">Find
+                                Sponsees
+                            </button>
                         </div>
                     </div>
 
@@ -46,11 +63,12 @@ function Home() {
                         <p>Join the network of thousands of sponsors and start sponsoring your events with great
                             brands.</p>
                         <div className="mt-4">
-                            <button className="btn btn-light font-weight-bold" onClick={goToSponseeSignUp}>Sign Up
+                            <button className="btn btn-light font-weight-bold bt1" onClick={goToSponseeSignUp}>Sign Up
                             </button>
-                            <button className="btn btn-primary font-weight-bold ml-3" onClick={goToSponseeLogin}>Login
+                            <button className="btn btn-primary font-weight-bold ml-3 bt2"
+                                    onClick={goToSponseeLogin}>Login
                             </button>
-                            <button className="btn btn-primary font-weight-bold ml-3" hidden>Find Sponsors</button>
+                            <button className="btn btn-primary font-weight-bold ml-0 bt3">Find Sponsors</button>
                         </div>
                     </div>
                 </div>
