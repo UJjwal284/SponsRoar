@@ -21,6 +21,7 @@ function Header3() {
         event.preventDefault();
         Firebase.auth().signOut().then(r => goToHome());
     }
+
     return (
         <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
             <a className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"

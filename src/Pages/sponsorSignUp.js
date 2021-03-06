@@ -34,9 +34,7 @@ function sponsorSignUp() {
                     Email: email
                 }),
             goToSponsorDashboard()
-        )
-        ;
-
+        );
     }
 
     return (
