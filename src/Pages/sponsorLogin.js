@@ -3,7 +3,7 @@ import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import './sponsorLogin.css'
 import {useHistory} from "react-router-dom";
-import Firebase from "../Components/Firebase";
+import Firebase, {db} from "../Components/Firebase";
 
 function sponsorLogin() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -21,7 +21,14 @@ function sponsorLogin() {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
         Firebase.auth().signInWithEmailAndPassword(email, password).then(r =>
-            history.push("/sponsorDashboard")
+            db.ref('sponsor/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
+                if (snapshot.exists()) {
+                    history.push("/sponsorDashboard")
+                } else {
+                    alert("Account Not Found");
+                    Firebase.auth().signOut();
+                }
+            })
         );
     }
 

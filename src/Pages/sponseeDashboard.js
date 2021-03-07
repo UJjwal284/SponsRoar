@@ -8,15 +8,15 @@ import Firebase, {db} from "../Components/Firebase";
 import $ from 'jquery'
 
 
-function sponsorDashboard() {
+function sponseeDashboard() {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const history = useHistory();
-    const goToAddPost = () => {
-        history.push("/addPost");
+    const goToSponsorLogin = () => {
+        history.push("/sponsorLogin");
     }
 
-    db.ref("sponsor/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
+    db.ref("sponsee/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
         const childData = snapshot.val();
         $('.t1').text(childData['Name']);
         $('.p1').text(childData['Email']);
@@ -33,7 +33,6 @@ function sponsorDashboard() {
                         <p className={"p1"}>email@email.com</p>
                         <button className={"btn btn-primary w-100"}>Edit Profile</button>
                     </div>
-                    <button className={"btn btn-primary py-2 mt-3 w-100"} onClick={goToAddPost}>Add Post</button>
                 </div>
                 <div></div>
             </div>
@@ -42,4 +41,4 @@ function sponsorDashboard() {
     );
 }
 
-export default sponsorDashboard;
+export default sponseeDashboard;

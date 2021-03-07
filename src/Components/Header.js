@@ -1,7 +1,7 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 import $ from 'jquery'
-import Firebase from "./Firebase";
+import Firebase, {db} from "./Firebase";
 
 function Header() {
     const history = useHistory();
@@ -17,8 +17,14 @@ function Header() {
         history.push("/findSponsees");
     }
 
-    const goToSponsorDashboard = () => {
-        history.push("/sponsorDashboard");
+    const goToDashboard = () => {
+        db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
+            if (snapshot.exists()) {
+                history.push("/sponseeDashboard");
+            } else {
+                history.push("/sponsorDashboard");
+            }
+        })
     }
 
     Firebase.auth().onAuthStateChanged(function (user) {
@@ -47,7 +53,7 @@ function Header() {
                    onClick={goToFindSponsees}>Find
                     Sponsees</a>
                 <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
-                     onClick={goToSponsorDashboard}/>
+                     onClick={goToDashboard}/>
             </div>
         </div>
     );

@@ -11,6 +11,8 @@ import sponsorDetails from "./Pages/sponsorDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
 import sponsorDashboard from "./Pages/sponsorDashboard";
 import Home from "./Pages/home";
+import sponseeDashboard from "./Pages/sponseeDashboard";
+import addPost from "./Pages/addPost";
 
 function App() {
     return (
@@ -29,6 +31,8 @@ function App() {
                 <Route path="/sponsorDetails" component={sponsorDetails}/>
                 <Route path="/sponseeDetails" component={sponseeDetails}/>
                 <Route path="/sponsorDashboard" component={sponsorDashboard}/>
+                <Route path="/sponseeDashboard" component={sponseeDashboard}/>
+                <Route path="/addPost" component={addPost}/>
             </Switch>
         </Router>
     );
