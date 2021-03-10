@@ -10,9 +10,9 @@ import sponseeLogin from "./Pages/sponseeLogin";
 import sponsorDetails from "./Pages/sponsorDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
 import sponsorDashboard from "./Pages/sponsorDashboard";
-import Home from "./Pages/home";
 import sponseeDashboard from "./Pages/sponseeDashboard";
 import addPost from "./Pages/addPost";
+import Home from "./Pages/home";
 
 function App() {
     return (

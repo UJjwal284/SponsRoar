@@ -21,6 +21,21 @@ function sponsorDashboard() {
         $('.t1').text(childData['Name']);
         $('.p1').text(childData['Email']);
     });
+    // eslint-disable-next-line no-restricted-globals
+    $(document).ready(function () {
+        let x = 0;
+        Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var key = childSnapshot.key;
+                var childData = childSnapshot.val();
+                if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
+                    x++;
+                }
+            });
+            //alert(x);
+        });
+    });
+
 
     return (
         <div className="main vh-100">

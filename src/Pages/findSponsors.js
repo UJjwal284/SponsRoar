@@ -2,9 +2,10 @@ import React from "react";
 import './findSponsors.css';
 import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
-import SponsorCard from "../Components/sponsorCard";
 import Header1 from "../Components/Header1";
-
+import SponsorCard from "../Components/sponsorCard";
+import $ from "jquery";
+import Firebase from "../Components/Firebase";
 
 function findSponsors() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -12,6 +13,25 @@ function findSponsors() {
     const goToHome = () => {
         history.push("/home");
     }
+
+    $(document).ready(function () {
+        let i = 0;
+        Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                const childData = childSnapshot.val();
+                $('#' + i + ' .br').text(childData['Brand']);
+                $('#' + i + ' .pn').text(childData['ProductName']);
+                $('#' + i + ' .ti').text(childData['CreatedOn']);
+                $('#' + i + ' .de').text(childData['Description']);
+                i++;
+            });
+            for (let i = 0; i < 5; i++) {
+                if ($('#' + i + ' .br').text() === 'Brand') {
+                    $('#' + i).hide();
+                }
+            }
+        });
+    });
 
     return (
         <div className="main">
@@ -94,11 +114,11 @@ function findSponsors() {
                         </div>
                     </div>
                     <div className="li">
-                        <SponsorCard/>
-                        <SponsorCard/>
-                        <SponsorCard/>
-                        <SponsorCard/>
-                        <SponsorCard/>
+                        <main>
+                            <section className='container'>
+                                <SponsorCard/>
+                            </section>
+                        </main>
                     </div>
                 </div>
             </section>
