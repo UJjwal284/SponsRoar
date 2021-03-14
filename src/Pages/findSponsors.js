@@ -20,11 +20,13 @@ function findSponsors() {
         let i = 0;
         Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
+                var key = childSnapshot.key;
                 const childData = childSnapshot.val();
                 $('#' + i + ' .br').text(childData['Brand']);
                 $('#' + i + ' .pn').text(childData['ProductName']);
                 $('#' + i + ' .ti').text(childData['CreatedOn']);
                 $('#' + i + ' .de').text(childData['Description']);
+                $('#' + i + ' .d2').attr('key', key);
                 i++;
             });
             for (let i = 0; i < 5; i++) {

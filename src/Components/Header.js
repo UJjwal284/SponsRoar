@@ -31,11 +31,9 @@ function Header() {
         if (user) {
             $('.pImage').show();
             $('.p1').hide();
-            $('.p2').hide();
         } else {
             $('.pImage').hide();
             $('.p1').show();
-            $('.p2').show();
         }
     });
 
@@ -49,7 +47,7 @@ function Header() {
                 <p className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
                    onClick={goToFindSponsors}>Find
                     Sponsors</p>
-                <a className="p2 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
+                <a className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
                    onClick={goToFindSponsees}>Find
                     Sponsees</a>
                 <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"

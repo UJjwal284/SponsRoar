@@ -1,19 +1,25 @@
 import React from 'react'
 import {useHistory} from "react-router-dom";
+import $ from 'jquery'
 
 const SponsorCard = () => {
 
     const history = useHistory();
-    const goToSponsorDetails = () => {
-        history.push("/sponsorDetails");
-    }
+
+    $(document).ready(function () {
+        $('.d2').click(function () {
+            history.push("/sponsorDetails");
+            localStorage.setItem("Item", $(this).attr('key'));
+        });
+    });
+
     return (
         Array.apply(null, {length: 5}).map((e, i) => (
             <span className="busterCards" key={i} id={i}>
                 <div className="ml-3 mr-5 mb-3">
-            <div className="ca" onClick={goToSponsorDetails}>
-                <div className="d-flex p-3 bg-white">
-                    <div>
+            <div className="ca">
+                <div className="d-flex p-3 bg-white d2">
+                    <div className={"pr-3"}>
                         <h6 className="text-primary font-weight-bold br">Brand</h6>
                         <h4 className="font-weight-bold pn">ProductName</h4>
                         <p className="mb-2 mr-4 de">Description</p>
