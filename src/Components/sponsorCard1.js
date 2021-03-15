@@ -2,7 +2,7 @@ import React from 'react'
 import {useHistory} from "react-router-dom";
 import $ from 'jquery'
 
-const SponsorCard = () => {
+const SponsorCard1 = () => {
 
     const history = useHistory();
 
@@ -10,10 +10,6 @@ const SponsorCard = () => {
         $('.d2').click(function () {
             history.push("/sponsorDetails");
             localStorage.setItem("Item", $(this).attr('key'));
-        });
-
-        $('button').click(function () {
-
         });
     });
 
@@ -38,9 +34,6 @@ const SponsorCard = () => {
                     <div className="ml-auto">
                         <img src="favorite.svg" height="20px"/>
                         <img src="share.svg" height="20px" className="mx-4"/>
-                        <button className="btn btn-outline-primary px-4">
-                            APPLY
-                        </button>
                     </div>
                 </div>
             </div>
@@ -51,4 +44,4 @@ const SponsorCard = () => {
     )
 }
 
-export default SponsorCard;
+export default SponsorCard1;

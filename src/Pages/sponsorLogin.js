@@ -5,6 +5,7 @@ import './sponsorLogin.css'
 import {useHistory} from "react-router-dom";
 import Firebase, {db} from "../Components/Firebase";
 import $ from "jquery";
+import AlertBox from "../Components/AlertBox";
 
 function sponsorLogin() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -57,9 +58,7 @@ function sponsorLogin() {
             </div>
             <div>
                 <Header/>
-                <div className="alert alert-primary text-center d1 w-100" role="alert">
-                    Reset email sent
-                </div>
+                <AlertBox message={'Password reset email sent'}/>
                 <div id="panel" className="rounded shadow p-3 bg-white">
                     <p className="h5">Hello!</p>
                     <h3 className="h4 font-weight-bold">Welcome Back</h3>
