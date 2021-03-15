@@ -5,6 +5,7 @@ import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
 import $ from "jquery";
 import Firebase from "../Components/Firebase";
+import Loading from "../Components/Loading";
 
 function Home() {
     const history = useHistory();
@@ -32,59 +33,69 @@ function Home() {
         history.push("/findSponsors");
     }
 
-    Firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            $('.bt1').hide();
-            $('.bt2').hide();
-            $('.bt3').show();
-        } else {
-            $('.bt3').hide();
+    $(document).ready(function () {
+        $('.d1').hide();
+        Firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                $('.bt1').hide();
+                $('.bt2').hide();
+                $('.bt3').show();
+            } else {
+                $('.bt3').hide();
 
-        }
+            }
+            $('.lo').hide();
+            $('.d1').show();
+        });
     });
 
     return (
         <div>
-            <Header/>
-            <img className="bgImage position-absolute" src="bg.jpg"/>
-            <section>
-                <p className="text-white text-large text-center mt-5">Matching Sponsees with great
-                    Sponsors</p>
-                <div className="d-flex sec1">
-                    <div>
-                        <h2>For Sponsors</h2>
-                        <p>Start sponsoring great events and individuals of right choice.</p>
-                        <div className="mt-5">
-                            <button className="btn btn-light font-weight-bold bt1" onClick={goToSponsorSignUp}>Sign Up
-                            </button>
-                            <button className="btn btn-primary font-weight-bold ml-3 bt2"
-                                    onClick={goToSponsorLogin}>Login
-                            </button>
-                            <button className="btn btn-primary font-weight-bold ml-0 bt3"
-                                    onClick={goToFindSponsees}>Find
-                                Sponsees
-                            </button>
+            <Loading/>
+            <div className={'.d1'}>
+                <Header/>
+                <img className="bgImage position-absolute" src="bg.jpg"/>
+                <section>
+                    <p className="text-white text-large text-center mt-5">Matching Sponsees with great
+                        Sponsors</p>
+                    <div className="d-flex sec1">
+                        <div>
+                            <h2>For Sponsors</h2>
+                            <p>Start sponsoring great events and individuals of right choice.</p>
+                            <div className="mt-5">
+                                <button className="btn btn-light font-weight-bold bt1" onClick={goToSponsorSignUp}>Sign
+                                    Up
+                                </button>
+                                <button className="btn btn-primary font-weight-bold ml-3 bt2"
+                                        onClick={goToSponsorLogin}>Login
+                                </button>
+                                <button className="btn btn-primary font-weight-bold ml-0 bt3"
+                                        onClick={goToFindSponsees}>Find
+                                    Sponsees
+                                </button>
+                            </div>
                         </div>
-                    </div>
 
-                    <div>
-                        <h2>For Sponsees</h2>
-                        <p>Join the network of thousands of sponsors and start sponsoring your events with great
-                            brands.</p>
-                        <div className="mt-4">
-                            <button className="btn btn-light font-weight-bold bt1" onClick={goToSponseeSignUp}>Sign Up
-                            </button>
-                            <button className="btn btn-primary font-weight-bold ml-3 bt2"
-                                    onClick={goToSponseeLogin}>Login
-                            </button>
-                            <button className="btn btn-primary font-weight-bold ml-0 bt3"
-                                    onClick={goToFindSponsors}>Find Sponsors
-                            </button>
+                        <div>
+                            <h2>For Sponsees</h2>
+                            <p>Join the network of thousands of sponsors and start sponsoring your events with great
+                                brands.</p>
+                            <div className="mt-4">
+                                <button className="btn btn-light font-weight-bold bt1" onClick={goToSponseeSignUp}>Sign
+                                    Up
+                                </button>
+                                <button className="btn btn-primary font-weight-bold ml-3 bt2"
+                                        onClick={goToSponseeLogin}>Login
+                                </button>
+                                <button className="btn btn-primary font-weight-bold ml-0 bt3"
+                                        onClick={goToFindSponsors}>Find Sponsors
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <Footer/>
+                </section>
+                <Footer/>
+            </div>
         </div>
     );
 }
