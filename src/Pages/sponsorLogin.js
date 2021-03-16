@@ -41,13 +41,13 @@ function sponsorLogin() {
         event.preventDefault();
         $('.d3').show();
         Firebase.auth().sendPasswordResetEmail(email).then(function (user) {
-            $('.d1').show();
+            $('.alr').show();
             $('.d3').hide();
         })
     }
 
     $(document).ready(function () {
-        $('.d1').hide();
+        $('.alr').hide();
         $('.d3').hide();
     });
 

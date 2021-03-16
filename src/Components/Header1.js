@@ -31,6 +31,10 @@ function Header1({children}) {
         }
     });
 
+    const goToSponsorDashboard = () => {
+        history.push("/sponsorDashboard");
+    }
+
     return (
         <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
             <a className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"
@@ -49,7 +53,7 @@ function Header1({children}) {
                 <button className="p1 btn btn-light bt1 ml-3 font-weight-normal" onClick={goToSponseeLogin}>Sponsee
                     Login
                 </button>
-                <img width={35} src={"profile.png"} className="rounded-circle pImage"/>
+                <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer" onClick={goToSponsorDashboard}/>
             </div>
         </div>
     );

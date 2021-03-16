@@ -1,19 +1,33 @@
 import React from 'react'
 import {useHistory} from "react-router-dom";
 import $ from 'jquery'
+import Firebase, {db} from "./Firebase";
 
 const SponsorCard = () => {
 
     const history = useHistory();
 
     $(document).ready(function () {
+        $('.alr').hide();
         $('.d2').click(function () {
             history.push("/sponsorDetails");
             localStorage.setItem("Item", $(this).attr('key'));
         });
 
         $('button').click(function () {
+            Firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
+                        if (snapshot.exists()) {
 
+                        } else {
+                            $('.alr').show().delay(3000).fadeOut(300);
+                        }
+                    })
+                } else {
+                    history.push("/sponseeLogin");
+                }
+            });
         });
     });
 

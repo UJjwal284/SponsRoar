@@ -29,11 +29,13 @@ function sponsorSignUp() {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
         Firebase.auth().createUserWithEmailAndPassword(email, password).then(r =>
-                db.ref("sponsor/" + Firebase.auth().currentUser.uid).set({
-                    Name: name,
-                    Email: email
-                }),
-            goToSponsorDashboard()
+            Firebase.auth().signInWithEmailAndPassword(email, password).then(r =>
+                    db.ref("sponsor/" + Firebase.auth().currentUser.uid).set({
+                        Name: name,
+                        Email: email
+                    }),
+                goToSponsorDashboard()
+            )
         );
     }
 

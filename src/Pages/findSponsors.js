@@ -7,6 +7,7 @@ import SponsorCard from "../Components/sponsorCard";
 import $ from "jquery";
 import Firebase from "../Components/Firebase";
 import Loading from "../Components/Loading";
+import AlertBox from "../Components/AlertBox";
 
 function findSponsors() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -47,14 +48,15 @@ function findSponsors() {
                     <span>Find Sponsees</span>
                 </Header1>
                 <section>
-                    <div className="input-group sb bg-lightgrey pt-2 pb-2 mb-2">
+                    <div className="input-group sb bg-lightgrey pt-2 pb-2">
                         <input type="search" className="form-control p-4" placeholder="Search for Company & Industry"
                                aria-label="Search"
                                aria-describedby="search-addon"/>
                         <button type="button" className="btn btn-primary font-weight-normal ml-1 pl-5 pr-5">Search
                         </button>
                     </div>
-                    <div className="pb-5 d-flex">
+                    <AlertBox message={'Login as Sponsee'}/>
+                    <div className="pb-5 d-flex mt-2">
                         <div className="bg-white filter mb-3 ml-5">
                             <p className="mb-0 text-lightgrey p-2">Filter By</p>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
