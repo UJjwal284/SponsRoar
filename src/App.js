@@ -13,6 +13,7 @@ import sponsorDashboard from "./Pages/sponsorDashboard";
 import sponseeDashboard from "./Pages/sponseeDashboard";
 import addPost from "./Pages/addPost";
 import setPlatforms from "./Pages/setPlatforms";
+import Home from "./Pages/home";
 
 function App() {
     return (
@@ -21,7 +22,7 @@ function App() {
                 <Link to="/"/>
             </section>
             <Switch>
-                <Route exact path="/" component={setPlatforms}/>
+                <Route exact path="/" component={Home}/>
                 <Route path="/sponsorSignUp" component={sponsorSignUp}/>
                 <Route path="/findSponsors" component={findSponsors}/>
                 <Route path="/findSponsees" component={findSponsees}/>
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/sponsorDashboard" component={sponsorDashboard}/>
                 <Route path="/sponseeDashboard" component={sponseeDashboard}/>
                 <Route path="/addPost" component={addPost}/>
+                <Route path="/setPlatforms" component={setPlatforms}/>
             </Switch>
         </Router>
     );

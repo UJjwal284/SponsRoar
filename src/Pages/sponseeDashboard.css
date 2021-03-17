@@ -1,0 +1,17 @@
+.div1 {
+    width: 18%;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.div2 > div {
+    margin-bottom: 10px;
+}
+
+.div2 > div > div {
+    margin-left: 20px;
+    font-weight: bold;
+    text-align: left;
+}
