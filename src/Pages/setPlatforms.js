@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import './sponsorLogin.css'
 import {useHistory} from "react-router-dom";
 import $ from "jquery";
 import Firebase from "../Components/Firebase";

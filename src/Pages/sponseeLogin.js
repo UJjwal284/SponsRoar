@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import './sponsorLogin.css'
+import './sponseeLogin.css'
 import {useHistory} from "react-router-dom";
 import Firebase, {db} from "../Components/Firebase";
 
@@ -36,6 +36,8 @@ function sponseeLogin() {
         <div className="main vh-100">
             <Header/>
             <div id="panel" className="rounded shadow p-3 bg-white">
+                <h1 className="font-weight-bold text-center">Sponsee Login</h1>
+                <hr/>
                 <p className="h5">Hello!</p>
                 <h3 className="h4 font-weight-bold">Welcome Back</h3>
                 <p className="text-secondary">You are just a step away from your sponsors</p>

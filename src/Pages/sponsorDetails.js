@@ -1,5 +1,4 @@
 import React from "react";
-import './findSponsors.css';
 import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
 import Header2 from "../Components/Header2";

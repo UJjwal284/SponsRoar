@@ -60,6 +60,8 @@ function sponsorLogin() {
                 <Header/>
                 <AlertBox message={'Password reset email sent'}/>
                 <div id="panel" className="rounded shadow p-3 bg-white">
+                    <h1 className="font-weight-bold text-center">Sponsor Login</h1>
+                    <hr/>
                     <p className="h5">Hello!</p>
                     <h3 className="h4 font-weight-bold">Welcome Back</h3>
                     <p className="text-secondary">You are just a step away from your sponsees</p>

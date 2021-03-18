@@ -39,6 +39,8 @@ function sponseeSignUp() {
         <div className="main vh-100">
             <Header/>
             <div id="panel" className="rounded shadow p-3 bg-white">
+                <h1 className="font-weight-bold text-center mx-2">Sponsee Sign Up</h1>
+                <hr/>
                 <p className="h5">Hello!</p>
                 <h3 className="h4 font-weight-bold">Welcome Back</h3>
                 <p className="text-secondary">You are just a step away from your sponsors</p>
