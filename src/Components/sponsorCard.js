@@ -14,7 +14,7 @@ const SponsorCard = () => {
             localStorage.setItem("Item", $(this).attr('key'));
         });
 
-        $('button').click(function () {
+        $('.applyBtn').click(function () {
             Firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
@@ -52,7 +52,7 @@ const SponsorCard = () => {
                     <div className="ml-auto">
                         <img src="favorite.svg" height="20px"/>
                         <img src="share.svg" height="20px" className="mx-4"/>
-                        <button className="btn btn-outline-primary px-4">
+                        <button className="btn btn-outline-primary px-4 applyBtn">
                             APPLY
                         </button>
                     </div>

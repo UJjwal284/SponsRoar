@@ -85,6 +85,7 @@ function findSponsors() {
                                 </label>
                             </div>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
+                            <hr className="bg-lightgrey mt-0 mb-0"/>
                             <div className="form-check">
                                 <h6 className="ml-3 mt-2">Platform</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
