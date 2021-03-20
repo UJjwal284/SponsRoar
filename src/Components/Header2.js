@@ -3,7 +3,7 @@ import {useHistory} from "react-router-dom";
 import Firebase from "./Firebase";
 import $ from "jquery";
 
-function Header2({children}) {
+function Header2() {
     const history = useHistory();
     const goToHome = () => {
         history.push("/");
@@ -23,6 +23,10 @@ function Header2({children}) {
 
     const goToSponseeLogin = () => {
         history.push("/sponseeLogin");
+    }
+
+    const goToSponsorDashboard = () => {
+        history.push("/sponsorDashboard");
     }
 
     Firebase.auth().onAuthStateChanged(function (user) {
@@ -58,7 +62,8 @@ function Header2({children}) {
                 <button className="p1 btn btn-light bt1 ml-3 font-weight-normal" onClick={goToSponseeLogin}>Sponsee
                     Login
                 </button>
-                <img width={35} src={"profile.png"} className="rounded-circle pImage"/>
+                <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
+                     onClick={goToSponsorDashboard}/>
             </div>
         </div>
     );

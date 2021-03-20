@@ -21,13 +21,17 @@ function findSponsors() {
         let i = 0;
         Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
-                var key = childSnapshot.key;
+                const key = childSnapshot.key;
                 const childData = childSnapshot.val();
                 $('#' + i + ' .br').text(childData['Brand']);
                 $('#' + i + ' .pn').text(childData['ProductName']);
-                $('#' + i + ' .ti').text(childData['CreatedOn']);
                 $('#' + i + ' .de').text(childData['Description']);
                 $('#' + i + ' .d2').attr('key', key);
+                $('#' + i + ' .ti').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }));
                 i++;
             });
             for (let i = 0; i < 5; i++) {

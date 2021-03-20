@@ -25,7 +25,7 @@ const SponsorCard = () => {
                         }
                     })
                 } else {
-                    history.push("/sponseeLogin");
+                    $('.alr').show().delay(3000).fadeOut(300);
                 }
             });
         });
