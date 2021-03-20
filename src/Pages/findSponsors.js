@@ -142,8 +142,7 @@ function findSponsors() {
                 <Footer/>
             </div>
         </div>
-    )
-        ;
+    );
 }
 
 export default findSponsors;

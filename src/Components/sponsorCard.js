@@ -2,6 +2,7 @@ import React from 'react'
 import {useHistory} from "react-router-dom";
 import $ from 'jquery'
 import Firebase, {db} from "./Firebase";
+import './sponsorCard.css';
 
 const SponsorCard = () => {
 
@@ -20,6 +21,24 @@ const SponsorCard = () => {
                     db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
 
+                        } else {
+                            $('.alr').show().delay(3000).fadeOut(300);
+                        }
+                    })
+                } else {
+                    $('.alr').show().delay(3000).fadeOut(300);
+                }
+            });
+        });
+
+        $('.fv').click(function () {
+            Firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
+                        if (snapshot.exists()) {
+                            db.ref("sponsee/" + Firebase.auth().currentUser.uid + "Favourites" + $(this).attr('key')).set({
+                                Favourite: true
+                            })
                         } else {
                             $('.alr').show().delay(3000).fadeOut(300);
                         }
@@ -50,8 +69,8 @@ const SponsorCard = () => {
                 <div className="d-flex px-4 py-2 bg-lightgrey">
                     <p className="my-auto ti">Time</p>
                     <div className="ml-auto">
-                        <img src="favorite.svg" height="20px"/>
-                        <img src="share.svg" height="20px" className="mx-4"/>
+                        <img src="favorite.svg" height="20px" className={'fv'}/>
+                        <img src="share.svg" height="20px" className="mx-4 sh"/>
                         <button className="btn btn-outline-primary px-4 applyBtn">
                             APPLY
                         </button>

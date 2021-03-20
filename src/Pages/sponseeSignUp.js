@@ -27,12 +27,12 @@ function sponseeSignUp() {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
         Firebase.auth().createUserWithEmailAndPassword(email, password).then(r =>
-            db.ref("sponsee/" + Firebase.auth().currentUser.uid).set({
-                Name: name,
-                Email: email,
-            }).then(r =>
-                goToSetPlatforms()
-            ))
+                db.ref("sponsee/" + Firebase.auth().currentUser.uid).set({
+                    Name: name,
+                    Email: email
+                }),
+            goToSetPlatforms()
+        )
     }
 
     return (
