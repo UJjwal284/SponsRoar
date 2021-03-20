@@ -14,25 +14,8 @@ import sponseeDashboard from "./Pages/sponseeDashboard";
 import addPost from "./Pages/addPost";
 import setPlatforms from "./Pages/setPlatforms";
 import Home from "./Pages/home";
-import $ from "jquery";
-import Firebase, {db} from "./Components/Firebase";
 
 function App() {
-    $('.applyBtn').click(function () {
-        Firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
-                    if (snapshot.exists()) {
-
-                    } else {
-                        $('.alr').show().delay(3000).fadeOut(300);
-                    }
-                })
-            } else {
-                $('.alr').show().delay(3000).fadeOut(300);
-            }
-        });
-    });
 
     return (
         <Router>

@@ -12,8 +12,8 @@ function sponseeSignUp() {
         history.push("/sponseeLogin");
     }
 
-    const goToSponseeDashboard = () => {
-        history.push("/sponseeDashboard");
+    const goToSetPlatforms = () => {
+        history.push("/setPlatforms");
     }
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,12 +27,12 @@ function sponseeSignUp() {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
         Firebase.auth().createUserWithEmailAndPassword(email, password).then(r =>
-                db.ref("sponsee/" + Firebase.auth().currentUser.uid).set({
-                    Name: name,
-                    Email: email
-                }),
-            goToSponseeDashboard()
-        );
+            db.ref("sponsee/" + Firebase.auth().currentUser.uid).set({
+                Name: name,
+                Email: email,
+            }).then(r =>
+                goToSetPlatforms()
+            ))
     }
 
     return (

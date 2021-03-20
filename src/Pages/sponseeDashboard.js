@@ -41,17 +41,17 @@ function sponseeDashboard() {
     });
 
     return (
-        <div className="main">
+        <div className="bg-lightgrey vh-100">
             <Loading/>
             <div className={'d1'}>
                 <Header3/>
                 <div className={"d-flex m-5"}>
-                    <div className={" ml-5 div1"}>
+                    <div className={"mb-5 ml-5 div1"}>
                         <div className="bg-danger p-3 ">
                             <img src={"profileImage.png"} width={100} className={"float-right"}/>
                             <h5 className={"font-weight-bold t1"}>User Name</h5>
                             <p className={"p1"}>email@email.com</p>
-                            <button className={"btn btn-primary w-100"}>Edit Profile</button>
+                            <button className={"btn btn-primary w-100 mt-2"}>Edit Profile</button>
                         </div>
                         <div className={'bg-secondary px-4 pt-3 div2 mb-5 mt-3 pb-3 text-center'}>
                             <div id="Facebook" className={'d-flex'}>

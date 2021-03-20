@@ -46,7 +46,6 @@ function setPlatforms() {
                 AvgViewsPerMonth: $('#LinkedInSet #sel2').val()
             })
         }
-
         goToSponseeDashboard();
     }
 
@@ -62,7 +61,7 @@ function setPlatforms() {
     });
 
     return (
-        <div className="main">
+        <div className="bg-lightgrey vh-100">
             <Header/>
             <div id="panel" className="rounded shadow p-3 bg-white ">
                 <h2 className={'text-center font-weight-bold'}>Select Your Platforms</h2>
