@@ -57,13 +57,14 @@ function sponsorSignUp() {
                                placeholder="Company / Brand name" value={name}
                                onChange={(e) => setName(e.target.value)}/>
                     </div>
-                    <select className="form-select btn border-dark font-weight-bold"
-                            aria-label="Default select example" value={industry}
+                    <select className="form-select btn border-dark font-weight-bold" value={industry}
                             onChange={(e) => setIndustry(e.target.value)}>
                         <option selected>Industry</option>
                         <option value="Technology">Technology</option>
                         <option value="Health Care">Health Care</option>
-                        <option value="etc">etc</option>
+                        <option value="Music">Music</option>
+                        <option value="Website">Website</option>
+                        <option value="Course">Course</option>
                     </select>
                     <div className="form-group mt-3">
                         <input autoFocus required value={email}

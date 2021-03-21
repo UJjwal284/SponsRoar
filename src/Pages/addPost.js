@@ -5,6 +5,7 @@ import './addPost.css';
 import Header3 from "../Components/Header3";
 import Firebase, {db} from "../Components/Firebase";
 import {useHistory} from "react-router-dom";
+import $ from "jquery";
 
 function addPost() {
 
@@ -46,10 +47,45 @@ function addPost() {
                 Category: category,
                 CreatedBy: Firebase.auth().currentUser.uid,
                 CreatedOn: time,
-            }).then(r => goToSponsorDashboard()
+            }).then(r => {
+                    if ($("input#Youtube").is(':checked')) {
+                        Firebase.database().ref("/posts/" + Id + "/Platform/Youtube").set({
+                            Value: $('select.Youtube').val()
+                        })
+                    }
+                    if ($("input#Instagram").is(':checked')) {
+                        Firebase.database().ref("/posts/" + Id + "/Platform/Instagram").set({
+                            Value: $('select.Instagram').val()
+                        })
+                    }
+                    if ($("input#Facebook").is(':checked')) {
+                        Firebase.database().ref("/posts/" + Id + "/Platform/Facebook").set({
+                            Value: $('select.Facebook').val()
+                        })
+                    }
+                    if ($("input#Website").is(':checked')) {
+                        Firebase.database().ref("/posts/" + Id + "/Platform/Website").set({
+                            Value: $('select.Website').val()
+                        })
+                    }
+                    goToSponsorDashboard()
+                }
             )
         });
+
+
     }
+
+    $(document).ready(function () {
+        $('.tcp select').hide();
+        $(':checkbox').change(function () {
+            if (this.checked) {
+                $('select.' + this.id).show();
+            } else {
+                $('select.' + this.id).hide();
+            }
+        })
+    });
 
     return (
         <div className="main pb-4">
@@ -60,85 +96,72 @@ function addPost() {
                        onChange={(e) => setProductName(e.target.value)}/>
                 <select className={"form-control mt-3"} value={category}
                         onChange={(e) => setCategory(e.target.value)}>
-                    <option value="">Category</option>
-                    <option value="">Technology</option>
-                    <option value="">Health Care</option>
-                    <option value="">Music</option>
-                    <option value="">Website</option>
-                    <option value="">Course</option>
+                    <option selected>Category</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Health Care">Health Care</option>
+                    <option value="Music">Music</option>
+                    <option value="Website">Website</option>
+                    <option value="Course">Course</option>
                 </select>
-                <div>
+                <div className={'tcp'}>
                     <p className={"p mb-0 mt-3"}>Platforms</p>
-                    <div className={"d-flex mb-2"}>
+                    <div className={"mb-2"}>
                         <label htmlFor="Youtube" className={"my-auto"}>Youtube</label>
-                        <input type="checkbox" className={"my-auto cYoutube"} id={'Youtube'}/>
-                        <select className="form-control mr-3 Youtube" hidden>
+                        <input type="checkbox" className={"my-auto "} id={'Youtube'}/>
+                        <select className="form-control Youtube">
                             <option value="">Minimum Subscribers</option>
-                            <option value="">0</option>
-                            <option value="">1,000</option>
-                            <option value="">10,000</option>
-                            <option value="">100,000</option>
-                            <option value="">1,000,000</option>
-                            <option value="">10,000,000</option>
-                        </select>
-                        <select className="form-control Youtube" hidden>
-                            <option value="">Minimum Average Views / Month</option>
-                            <option value="">0</option>
-                            <option value="">1,000</option>
-                            <option value="">10,000</option>
-                            <option value="">100,000</option>
-                            <option value="">1,000,000</option>
-                            <option value="">10,000,000</option>
-                            <option value="">100,000,000</option>
+                            <option value="0">0</option>
+                            <option value="1,000">1,000</option>
+                            <option value="10,000">10,000</option>
+                            <option value="100,000">100,000</option>
+                            <option value="1,000,000">1,000,000</option>
+                            <option value="10,000,000">10,000,000</option>
                         </select>
                     </div>
 
-                    <div className={"d-flex mb-2"}>
+                    <div className={"mb-2"}>
                         <label htmlFor="Instagram" className={"my-auto"}>Instagram</label>
-                        <input type="checkbox" className={"my-auto cInstagram"} id={'Instagram'}/>
+                        <input type="checkbox" className={"my-auto"} id={'Instagram'}/>
                         <div>
-                            <select className="form-control Instagram" hidden>
+                            <select className="form-control Instagram">
                                 <option value="">Minimum Followers</option>
-                                <option value="">0</option>
-                                <option value="">1,000</option>
-                                <option value="">10,000</option>
-                                <option value="">100,000</option>
-                                <option value="">1,000,000</option>
-                                <option value="">10,000,000</option>
-                                <option value="">100,000,000</option>
+                                <option value="0">0</option>
+                                <option value="1,000">1,000</option>
+                                <option value="10,000">10,000</option>
+                                <option value="100,000">100,000</option>
+                                <option value="1,000,000">1,000,000</option>
+                                <option value="10,000,000">10,000,000</option>
                             </select>
                         </div>
                     </div>
 
-                    <div className={"d-flex mb-2"}>
+                    <div className={"mb-2"}>
                         <label htmlFor="Facebook" className={"my-auto"}>Facebook</label>
-                        <input type="checkbox" className={"my-auto cFacebook"} id={'Facebook'}/>
+                        <input type="checkbox" className={"my-auto"} id={'Facebook'}/>
                         <div>
-                            <select className="form-control Facebook" hidden>
+                            <select className="form-control Facebook">
                                 <option value="">Minimum Page Likes</option>
-                                <option value="">0</option>
-                                <option value="">1,000</option>
-                                <option value="">10,000</option>
-                                <option value="">100,000</option>
-                                <option value="">1,000,000</option>
-                                <option value="">10,000,000</option>
-                                <option value="">100,000,000</option>
+                                <option value="0">0</option>
+                                <option value="1,000">1,000</option>
+                                <option value="10,000">10,000</option>
+                                <option value="100,000">100,000</option>
+                                <option value="1,000,000">1,000,000</option>
+                                <option value="10,000,000">10,000,000</option>
                             </select>
                         </div>
                     </div>
-                    <div className={"d-flex mb-2"}>
+                    <div className={"mb-2"}>
                         <label htmlFor="Website" className={"my-auto"}>Website</label>
-                        <input type="checkbox" className={"my-auto cWebsite"} id={'Website'}/>
+                        <input type="checkbox" className={"my-auto "} id={'Website'}/>
                         <div>
-                            <select className="form-control Website" hidden>
+                            <select className="form-control Website">
                                 <option value="">Minimum Monthly Views</option>
-                                <option value="">0</option>
-                                <option value="">1,000</option>
-                                <option value="">10,000</option>
-                                <option value="">100,000</option>
-                                <option value="">1,000,000</option>
-                                <option value="">10,000,000</option>
-                                <option value="">100,000,000</option>
+                                <option value="0">0</option>
+                                <option value="1,000">1,000</option>
+                                <option value="10,000">10,000</option>
+                                <option value="100,000">100,000</option>
+                                <option value="1,000,000">1,000,000</option>
+                                <option value="10,000,000">10,000,000</option>
                             </select>
                         </div>
                     </div>

@@ -17,3 +17,7 @@ input[type=checkbox] {
 .f1 {
     width: fit-content;
 }
+
+.tcp select {
+    width: 100%;
+}
