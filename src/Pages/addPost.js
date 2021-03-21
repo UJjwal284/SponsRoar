@@ -52,7 +52,7 @@ function addPost() {
     }
 
     return (
-        <div className="main vh-100 pb-5 mb-5">
+        <div className="main pb-4">
             <Header3/>
             <form className={"bg-white mx-auto mb-5 p-4 f1 mt-3"}>
                 <p className={"mb-0 p"}>Product Name</p>

@@ -14,6 +14,8 @@ function sponsorSignUp() {
     const [email, setEmail] = useState("");
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [password, setPassword] = useState("");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [industry, setIndustry] = useState("");
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const history = useHistory();
@@ -32,7 +34,8 @@ function sponsorSignUp() {
             Firebase.auth().signInWithEmailAndPassword(email, password).then(r =>
                     db.ref("sponsor/" + Firebase.auth().currentUser.uid).set({
                         Name: name,
-                        Email: email
+                        Email: email,
+                        Industry: industry
                     }),
                 goToSponsorDashboard()
             )
@@ -40,7 +43,7 @@ function sponsorSignUp() {
     }
 
     return (
-        <div className="main vh-100">
+        <div className="main pb-1">
             <Header/>
             <div id="panel" className="rounded shadow p-3 bg-white">
                 <h1 className="font-weight-bold text-center mx-2">Sponsor Sign Up</h1>
@@ -54,18 +57,14 @@ function sponsorSignUp() {
                                placeholder="Company / Brand name" value={name}
                                onChange={(e) => setName(e.target.value)}/>
                     </div>
-                    <div className="dropdown">
-                        <button className="btn dropdown-toggle border-dark font-weight-bold" type="button"
-                                id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                            Industry
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li className="dropdown-item">Technology</li>
-                            <li className="dropdown-item">Health Care</li>
-                            <li className="dropdown-item">etc</li>
-                        </ul>
-                    </div>
+                    <select className="form-select btn border-dark font-weight-bold"
+                            aria-label="Default select example" value={industry}
+                            onChange={(e) => setIndustry(e.target.value)}>
+                        <option selected>Industry</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Health Care">Health Care</option>
+                        <option value="etc">etc</option>
+                    </select>
                     <div className="form-group mt-3">
                         <input autoFocus required value={email}
                                type="email" className="form-control border-dark font-weight-bold"

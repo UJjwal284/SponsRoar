@@ -25,6 +25,7 @@ function sponsorDashboard() {
     });
 
     $(document).ready(function () {
+            $('.yhnpas').hide();
             let i = 0;
             Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
                 snapshot.forEach(function (childSnapshot) {
@@ -44,6 +45,10 @@ function sponsorDashboard() {
                         $('#' + i).hide();
                     }
                 }
+
+                if ($('#' + 0 + ' .br').text() === 'Brand') {
+                    $('.yhnpas').show();
+                }
                 $('.lo').hide();
                 $('.d1').show();
             });
@@ -51,7 +56,7 @@ function sponsorDashboard() {
     );
 
     return (
-        <div className="main">
+        <div className="main vh-100">
             <Loading/>
             <div className={'d1 w-100'}>
                 <Header3/>
@@ -61,12 +66,13 @@ function sponsorDashboard() {
                             <img src={"profileImage.png"} height={100} className={"float-right"}/>
                             <h5 className={"font-weight-bold t1"}>User Name</h5>
                             <p className={"p1"}>email@email.com</p>
-                            <button className={"btn btn-primary w-100"}>Edit Profile</button>
+                            <button className={"btn btn-primary mt-3 w-100"}>Edit Profile</button>
                         </div>
                         <button className={"btn btn-primary py-2 mt-3 w-100"} onClick={goToAddPost}>Add Post</button>
                     </div>
-                    <div>
-                        <h3 className={'ml-3 font-weight-bold'}>Your Posts</h3>
+                    <div className={'pl-3'}>
+                        <h3 className={'font-weight-bold'}>Your Posts</h3>
+                        <p className={'yhnpas'}>You have not posted any sponsor</p>
                         <SponsorCard1/>
                     </div>
                 </div>
