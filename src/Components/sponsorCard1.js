@@ -1,6 +1,7 @@
 import React from 'react'
 import {useHistory} from "react-router-dom";
 import $ from 'jquery'
+import './sponsorCard.css';
 
 const SponsorCard1 = () => {
 
@@ -24,7 +25,7 @@ const SponsorCard1 = () => {
                         <h4 className="font-weight-bold pn">ProductName</h4>
                         <p className="mb-2 mr-4 de">Description</p>
                         <div className="d-flex">
-                            <p className="w-50 m-0"><b>Category:</b> Technology</p>
+                            <p className="w-50 m-0 cat"><b>Category:</b> Technology</p>
                             <p className="w-50 m-0"><b>Platform:</b> Youtube, Facebook</p>
                         </div>
                     </div>
@@ -32,8 +33,8 @@ const SponsorCard1 = () => {
                 <div className="d-flex px-4 py-2 bg-lightgrey">
                     <p className="my-auto ti">Time</p>
                     <div className="ml-auto">
-                        <img src="favorite.svg" height="20px"/>
-                        <img src="share.svg" height="20px" className="mx-4"/>
+                        <img src="favorite.svg" height="20px" className={'fv'}/>
+                        <img src="share.svg" height="20px" className="mx-4 sh"/>
                     </div>
                 </div>
             </div>

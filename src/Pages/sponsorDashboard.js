@@ -34,9 +34,14 @@ function sponsorDashboard() {
                     if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
                         $('#' + i + ' .br').text(childData['Brand']);
                         $('#' + i + ' .pn').text(childData['ProductName']);
-                        $('#' + i + ' .ti').text(childData['CreatedOn']);
                         $('#' + i + ' .de').text(childData['Description']);
+                        $('#' + i + ' .cat').text('Category: ' + childData['Category']);
                         $('#' + i + ' .d2').attr('key', key);
+                        $('#' + i + ' .ti').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        }));
                         i++;
                     }
                 });
@@ -56,7 +61,7 @@ function sponsorDashboard() {
     );
 
     return (
-        <div className="main vh-100">
+        <div className="main">
             <Loading/>
             <div className={'d1 w-100'}>
                 <Header3/>
@@ -70,7 +75,7 @@ function sponsorDashboard() {
                         </div>
                         <button className={"btn btn-primary py-2 mt-3 w-100"} onClick={goToAddPost}>Add Post</button>
                     </div>
-                    <div className={'pl-3'}>
+                    <div className={'pl-3 w-75'}>
                         <h3 className={'font-weight-bold'}>Your Posts</h3>
                         <p className={'yhnpas'}>You have not posted any sponsor</p>
                         <SponsorCard1/>

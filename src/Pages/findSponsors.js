@@ -26,6 +26,7 @@ function findSponsors() {
                 $('#' + i + ' .br').text(childData['Brand']);
                 $('#' + i + ' .pn').text(childData['ProductName']);
                 $('#' + i + ' .de').text(childData['Description']);
+                $('#' + i + ' .cat').text('Category: ' + childData['Category']);
                 $('#' + i + ' .d2').attr('key', key);
                 $('#' + i + ' .ti').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
                     year: 'numeric',
@@ -64,8 +65,8 @@ function findSponsors() {
                         <div className="bg-white filter mb-3 ml-5">
                             <p className="mb-0 text-lightgrey p-2">Filter By</p>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <div className="form-check">
-                                <h6 className="ml-3 mt-2">Category</h6>
+                            <div className="form-check pl-3">
+                                <h6 className="ml-4 mt-2">Category</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Technology
@@ -84,14 +85,14 @@ function findSponsors() {
                                 </label><br/>
                                 <input className="form-check-input mb-3" type="checkbox" value=""
                                        id="flexCheckDefault"/>
-                                <label className="form-check-label " htmlFor="flexCheckDefault">
+                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                     Course
                                 </label>
                             </div>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <div className="form-check">
-                                <h6 className="ml-3 mt-2">Platform</h6>
+                            <div className="form-check pl-3">
+                                <h6 className="ml-4 mt-2">Platform</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Youtube
@@ -104,14 +105,15 @@ function findSponsors() {
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Instagram
                                 </label><br/>
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                                <label className="form-check-label " htmlFor="flexCheckDefault">
+                                <input className="form-check-input mb-3" type="checkbox" value=""
+                                       id="flexCheckDefault"/>
+                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                     Website
                                 </label>
                             </div>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <div className="form-check pb-1">
-                                <h6 className="ml-3 mt-2">Brand</h6>
+                            <div className="form-check pb-1 pl-3">
+                                <h6 className="ml-4 mt-2">Brand</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Redmi
@@ -124,8 +126,9 @@ function findSponsors() {
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     WOW
                                 </label><br/>
-                                <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                                <label className="form-check-label " htmlFor="flexCheckDefault">
+                                <input className="form-check-input mb-3" type="checkbox" value=""
+                                       id="flexCheckDefault"/>
+                                <label className="form-check-label" htmlFor="flexCheckDefault">
                                     Samsung
                                 </label>
                             </div>
