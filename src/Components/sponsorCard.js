@@ -9,6 +9,7 @@ const SponsorCard = () => {
     const history = useHistory();
 
     $(document).ready(function () {
+        $('.fvy').hide();
         $('.alr').hide();
         $('div.d2').click(function () {
             history.push("/sponsorDetails");
@@ -39,9 +40,7 @@ const SponsorCard = () => {
                         if (snapshot.exists()) {
                             let d1 = db.ref("sponsee/" + Firebase.auth().currentUser.uid + "/Favourites/" + ID);
                             d1.once("value", snapshot => {
-                                if (snapshot.exists()) {
-                                    d1.remove();
-                                } else {
+                                if (!snapshot.exists()) {
                                     d1.set({
                                         Favourite: true
                                     })
@@ -55,6 +54,14 @@ const SponsorCard = () => {
                     $('.alr').show().delay(3000).fadeOut(300);
                 }
             });
+        });
+
+        $('.fvy').click(function () {
+            const ID = $(this).attr('key');
+            let d1 = db.ref("sponsee/" + Firebase.auth().currentUser.uid + "/Favourites/" + ID);
+            d1.once("value", snapshot => {
+                d1.remove();
+            })
         });
     });
 
@@ -79,6 +86,7 @@ const SponsorCard = () => {
                             <p className="my-auto ti">Time</p>
                             <div className="ml-auto d4">
                                 <img src="favorite.svg" height="20px" className={'fv d2'}/>
+                                <img src="favoriteyellow.svg" height="20px" className={'fvy d2'}/>
                                 <img src="share.svg" height="20px" className="mx-4 sh"/>
                                 <button className="btn btn-outline-primary px-4 applyBtn">
                                     APPLY
