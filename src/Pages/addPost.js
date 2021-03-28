@@ -31,12 +31,6 @@ function addPost() {
         let time = +new Date();
         let Id = time + Firebase.auth().currentUser.uid;
 
-        // let storageRef = Firebase.storage().ref('productImage/') + Id + '.jpg';
-        // let fileUpload = document.getElementById("fileUpload");
-        // fileUpload.addEventListener('change', function (evt) {
-        //     let firstFile = evt.target.files[0];
-        //     storageRef.put(firstFile);
-        // });
         db.ref("sponsor/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
             const childData = snapshot.val();
             db.ref("/posts/" + Id).set({

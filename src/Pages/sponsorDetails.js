@@ -6,6 +6,7 @@ import $ from "jquery";
 import Firebase, {db} from "../Components/Firebase";
 import Loading from "../Components/Loading";
 import AlertBox from "../Components/AlertBox";
+import './sponsorDetails.css'
 
 function sponsorDetails() {
     // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -7,7 +7,6 @@ import SponsorCard from "../Components/sponsorCard";
 import $ from "jquery";
 import Firebase from "../Components/Firebase";
 import Loading from "../Components/Loading";
-import AlertBox from "../Components/AlertBox";
 
 function findSponsors() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -28,6 +27,7 @@ function findSponsors() {
                 $('#' + i + ' .de').text(childData['Description']);
                 $('#' + i + ' .cat').text('Category: ' + childData['Category']);
                 $('#' + i + ' .d2').attr('key', key);
+                $('#' + i + ' .applyBtn').attr('key', key);
                 $('#' + i + ' .ti').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
                     year: 'numeric',
                     month: 'long',
@@ -60,7 +60,6 @@ function findSponsors() {
                         <button type="button" className="btn btn-primary font-weight-normal ml-1 pl-5 pr-5">Search
                         </button>
                     </div>
-                    <AlertBox message={'Login as Sponsee'}/>
                     <div className="pb-5 d-flex mt-2">
                         <div className="bg-white filter mb-3 ml-5">
                             <p className="mb-0 text-lightgrey p-2">Filter By</p>
