@@ -1,3 +1,18 @@
 .t1 {
     width: fit-content;
 }
+
+.plb {
+    background-color: #f6f6f6;
+    width: fit-content;
+}
+
+.splt {
+    width: fit-content;
+}
+
+input[type=checkbox]:before {
+}
+
+input[type=checkbox] {
+}
