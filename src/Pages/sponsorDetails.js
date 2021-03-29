@@ -51,6 +51,16 @@ function sponsorDetails() {
                     var childData = childSnapshot.val();
                     $('#' + key).show();
                     $('#' + key + ' #p1').text(childData['Value']);
+                    db.ref('sponsee/' + Firebase.auth().currentUser.uid + "/platforms/" + key).once("value", snapshot => {
+                        if (snapshot.exists()) {
+                            const childData1 = snapshot.val();
+                            if (parseInt(childData1['Subscribers']) < parseInt(childData['Value'])) {
+                                $('input#in' + key).attr("disabled", true);
+                            }
+                        } else {
+                            $('input#in' + key).attr("disabled", true);
+                        }
+                    })
                 });
                 $('.lo').hide();
                 $('.d1').show();
@@ -62,7 +72,26 @@ function sponsorDetails() {
                 if (user) {
                     db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
-
+                            if ($("input#inYoutube").is(':checked')) {
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Youtube").set({
+                                    Status: 'Pending'
+                                })
+                            }
+                            if ($("input#inInstagram").is(':checked')) {
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Instagram").set({
+                                    Status: 'Pending'
+                                })
+                            }
+                            if ($("input#inFacebook").is(':checked')) {
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Facebook").set({
+                                    Status: 'Pending'
+                                })
+                            }
+                            if ($("input#inWebsite").is(':checked')) {
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Website").set({
+                                    Status: 'Pending'
+                                })
+                            }
                         } else {
                             $('.alr').show().delay(3000).fadeOut(300);
                         }
@@ -105,14 +134,6 @@ function sponsorDetails() {
                 }
             });
         });
-
-        $(':checkbox').change(function () {
-            if (this.checked) {
-                $('#' + this.id).attr("color", "blue");
-            } else {
-                $('select.' + this.id).hide();
-            }
-        })
     });
 
     return (

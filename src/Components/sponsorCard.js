@@ -16,25 +16,6 @@ const SponsorCard = () => {
             localStorage.setItem("Item", $(this).attr('key'));
         });
 
-        $('.applyBtn').click(function () {
-            const postID = $(this).attr('key');
-            Firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
-                    db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
-                        if (snapshot.exists()) {
-                            db.ref("posts/" + postID + "/Applicants/" + Firebase.auth().currentUser.uid).set({
-                                Apply: true
-                            })
-                        } else {
-                            $('.alr').show().delay(3000).fadeOut(300);
-                        }
-                    })
-                } else {
-                    $('.alr').show().delay(3000).fadeOut(300);
-                }
-            });
-        });
-
         $('.fv').click(function () {
             const ID = $(this).attr('key');
             Firebase.auth().onAuthStateChanged(function (user) {
