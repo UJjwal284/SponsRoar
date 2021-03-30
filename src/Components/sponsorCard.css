@@ -5,3 +5,8 @@
 .sh:hover {
     transform: scale(1.2);
 }
+
+.de {
+    font-size: 14px;
+    line-height: 1.25;
+}
