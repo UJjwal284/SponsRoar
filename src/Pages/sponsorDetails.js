@@ -1,12 +1,12 @@
 import React from "react";
-import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
-import Header2 from "../Components/Header2";
 import $ from "jquery";
 import Firebase, {db} from "../Components/Firebase";
-import Loading from "../Components/Loading";
-import AlertBox from "../Components/AlertBox";
 import './sponsorDetails.css'
+import Loading from "../Components/Loading";
+import Header2 from "../Components/Header2";
+import AlertBox from "../Components/AlertBox";
+import Footer from "../Components/Footer";
 
 function sponsorDetails() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -30,6 +30,10 @@ function sponsorDetails() {
                 day: 'numeric'
             }));
 
+            if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
+                $('.plb').hide();
+            }
+
             Firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
@@ -43,29 +47,93 @@ function sponsorDetails() {
             });
             $('.lo').hide();
             $('.d1').show();
+        });
 
-            $('.pltc>div').hide();
-            db.ref("/posts/" + localStorage.getItem("Item") + "/Platform/").once("value").then(function (snapshot) {
-                snapshot.forEach(function (childSnapshot) {
-                    var key = childSnapshot.key;
-                    var childData = childSnapshot.val();
-                    $('#' + key).show();
-                    $('#' + key + ' #p1').text(childData['Value']);
-                    db.ref('sponsee/' + Firebase.auth().currentUser.uid + "/platforms/" + key).once("value", snapshot => {
-                        if (snapshot.exists()) {
-                            const childData1 = snapshot.val();
-                            if (parseInt(childData1['Subscribers']) < parseInt(childData['Value'])) {
-                                $('input#in' + key).attr("disabled", true);
-                            }
-                        } else {
+        $('.pltc>div').hide();
+        db.ref("/posts/" + localStorage.getItem("Item") + "/Platform/").once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var key = childSnapshot.key;
+                var childData = childSnapshot.val();
+                $('#' + key).show();
+                $('#' + key + ' #p1').text(childData['Value']);
+                db.ref('sponsee/' + Firebase.auth().currentUser.uid + "/platforms/" + key).once("value", snapshot => {
+                    if (snapshot.exists()) {
+                        const childData1 = snapshot.val();
+                        if (parseInt(childData1['Subscribers']) < parseInt(childData['Value'])) {
                             $('input#in' + key).attr("disabled", true);
                         }
-                    })
-                });
-                $('.lo').hide();
-                $('.d1').show();
+                    } else {
+                        $('input#in' + key).attr("disabled", true);
+                    }
+                })
+            });
+            $('.lo').hide();
+            $('.d1').show();
+        });
+
+        $('.mps button').hide();
+        Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants").once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                $('#op' + childSnapshot.key).show();
             });
         });
+
+        $('#opInstagram').click(function () {
+            $('.ac').empty();
+            Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Instagram").once("value").then(function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    Firebase.database().ref("/sponsee/" + childSnapshot.key).once("value").then(function (snapshot) {
+                        var Data = snapshot.val();
+                        Firebase.database().ref("/sponsee/" + childSnapshot.key + '/platforms/Instagram').once("value").then(function (snapshot) {
+                            var Data1 = snapshot.val();
+                            $('.ac').append('<p>' + Data['Name'] + ' · ' + Data1['Subscribers'] + '</p>');
+                        });
+                    });
+                });
+            });
+        })
+        $('#opFacebook').click(function () {
+            $('.ac').empty();
+            Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Facebook").once("value").then(function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    Firebase.database().ref("/sponsee/" + childSnapshot.key).once("value").then(function (snapshot) {
+                        var Data = snapshot.val();
+                        Firebase.database().ref("/sponsee/" + childSnapshot.key + '/platforms/Facebook').once("value").then(function (snapshot) {
+                            var Data1 = snapshot.val();
+                            $('.ac').append('<p>' + Data['Name'] + ' · ' + Data1['Subscribers'] + '</p>');
+                        });
+                    });
+                });
+            });
+        })
+        $('#opYoutube').click(function () {
+            $('.ac').empty();
+            Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Youtube").once("value").then(function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    Firebase.database().ref("/sponsee/" + childSnapshot.key).once("value").then(function (snapshot) {
+                        var Data = snapshot.val();
+                        Firebase.database().ref("/sponsee/" + childSnapshot.key + '/platforms/Youtube').once("value").then(function (snapshot) {
+                            var Data1 = snapshot.val();
+                            $('.ac').append('<p>' + Data['Name'] + ' · ' + Data1['Subscribers'] + '</p>');
+                        });
+                    });
+                });
+            });
+        })
+        $('#opWebsite').click(function () {
+            $('.ac').empty();
+            Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Website").once("value").then(function (snapshot) {
+                snapshot.forEach(function (childSnapshot) {
+                    Firebase.database().ref("/sponsee/" + childSnapshot.key).once("value").then(function (snapshot) {
+                        var Data = snapshot.val();
+                        Firebase.database().ref("/sponsee/" + childSnapshot.key + '/platforms/Website').once("value").then(function (snapshot) {
+                            var Data1 = snapshot.val();
+                            $('.ac').append('<p>' + Data['Name'] + ' · ' + Data1['Subscribers'] + '</p>');
+                        });
+                    });
+                });
+            });
+        })
 
         $('.applyBtn').click(function () {
             Firebase.auth().onAuthStateChanged(function (user) {
@@ -73,22 +141,22 @@ function sponsorDetails() {
                     db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
                             if ($("input#inYoutube").is(':checked')) {
-                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Youtube").set({
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Youtube/" + Firebase.auth().currentUser.uid).set({
                                     Status: 'Pending'
                                 })
                             }
                             if ($("input#inInstagram").is(':checked')) {
-                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Instagram").set({
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Instagram/" + Firebase.auth().currentUser.uid).set({
                                     Status: 'Pending'
                                 })
                             }
                             if ($("input#inFacebook").is(':checked')) {
-                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Facebook").set({
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Facebook/" + Firebase.auth().currentUser.uid).set({
                                     Status: 'Pending'
                                 })
                             }
                             if ($("input#inWebsite").is(':checked')) {
-                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/" + Firebase.auth().currentUser.uid + "/Platform/Website").set({
+                                Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Website/" + Firebase.auth().currentUser.uid).set({
                                     Status: 'Pending'
                                 })
                             }
@@ -252,6 +320,16 @@ function sponsorDetails() {
                                 <button className={"btn btn-outline-primary px-4 applyBtn mt-3"}>
                                     APPLY
                                 </button>
+                            </div>
+                            <div className={'mt-3 mx-auto rounded-lg pb-3 pt-2 px-3 bg-lightgrey'}>
+                                <div className="mt-2 mps">
+                                    <button id={'opFacebook'} className={'btn btn-primary'}>Facebook</button>
+                                    <button id={'opYoutube'} className={'btn btn-primary'}>Youtube</button>
+                                    <button id={'opInstagram'} className={'btn btn-primary'}>Instagram</button>
+                                    <button id={'opWebsite'} className={'btn btn-primary'}>Website</button>
+                                </div>
+                                <div className={'bg-white rounded-lg mt-3 ac'}>
+                                </div>
                             </div>
                         </div>
                         <div className={"bg-lightgrey py-2 px-4 t4"}>Posted On: an hour ago</div>
