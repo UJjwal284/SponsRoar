@@ -64,7 +64,8 @@ const SponsorCard = () => {
                             <p className="w-50 m-0"><b>Platform:</b> Youtube, Facebook</p>
                         </div>
                     </div>
-                    <img src="logo.png" height="130px" className="ml-auto m-3"/></div>
+                    <img src="logo.png" height="130px" className="ml-auto m-3"/>
+                </div>
                 <div className="d-flex px-4 py-2 bg-lightgrey">
                     <p className="my-auto ti">Time</p>
                     <div className="ml-auto">

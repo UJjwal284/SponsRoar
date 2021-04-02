@@ -4,6 +4,8 @@ import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
 import SponseeCard from "../Components/sponseeCard";
 import Header1 from "../Components/Header1";
+import Firebase from "../Components/Firebase";
+import $ from "jquery";
 
 
 function findSponsees() {
@@ -13,8 +15,36 @@ function findSponsees() {
         history.push("/findSponsors");
     }
 
+    $(document).ready(function () {
+        let i = 0;
+        Firebase.database().ref("/sponsee/").once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                const childData = childSnapshot.val();
+                $('#' + i + ' .un').text(childData['Name']);
+                $('#' + i + ' .scar').attr('key', childSnapshot.key);
+
+                Firebase.database().ref("/sponsee/" + childSnapshot.key + "/platforms").once("value").then(function (snapshot) {
+                    snapshot.forEach(function (childSnapshot) {
+                        const key = childSnapshot.key;
+                        const childData = childSnapshot.val();
+                    });
+                });
+                $('#' + i + ' .li').hide();
+                i++;
+            });
+
+            for (let i = 0; i < 5; i++) {
+                if ($('#' + i + ' .un').text() === 'User Name') {
+                    $('#' + i).hide();
+                }
+            }
+            $('.lo').hide();
+            $('.d1').show();
+        });
+    });
+
     return (
-        <div className="main">
+        <div className="main vh-100">
             <Header1>
                 <span>Find Sponsors</span>
             </Header1>
@@ -50,10 +80,6 @@ function findSponsees() {
                         </div>
                     </div>
                     <div className="li">
-                        <SponseeCard/>
-                        <SponseeCard/>
-                        <SponseeCard/>
-                        <SponseeCard/>
                         <SponseeCard/>
                     </div>
                 </div>

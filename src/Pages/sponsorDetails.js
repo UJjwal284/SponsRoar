@@ -92,6 +92,7 @@ function sponsorDetails() {
                 });
             });
         })
+
         $('#opFacebook').click(function () {
             $('.ac').empty();
             Firebase.database().ref("/posts/" + localStorage.getItem("Item") + "/Applicants/Facebook").once("value").then(function (snapshot) {
