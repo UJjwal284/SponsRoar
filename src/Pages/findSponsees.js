@@ -23,13 +23,15 @@ function findSponsees() {
                 $('#' + i + ' .un').text(childData['Name']);
                 $('#' + i + ' .scar').attr('key', childSnapshot.key);
 
-                Firebase.database().ref("/sponsee/" + childSnapshot.key + "/platforms").once("value").then(function (snapshot) {
-                    snapshot.forEach(function (childSnapshot) {
-                        const key = childSnapshot.key;
-                        const childData = childSnapshot.val();
-                    });
-                });
-                $('#' + i + ' .li').hide();
+                //$('#' + i + ' .li>div').hide();
+                // Firebase.database().ref("/sponsee/" + childSnapshot.key + '/platforms').once("value").then(function (snapshot) {
+                //     snapshot.forEach(function (childSnapshot) {
+                //         const key = childSnapshot.key;
+                //         const childData = childSnapshot.val();
+                //         $('#' + i + ' #' + key).show();
+                //         $('#' + i + ' #' + key + ' p').text(childData['Subscribers']);
+                //     });
+                // });
                 i++;
             });
 
