@@ -39,14 +39,6 @@ const SponsorCard = () => {
                 }
             });
         });
-
-        $('.fvy').click(function () {
-            const ID = $(this).attr('key');
-            let d1 = db.ref("sponsee/" + Firebase.auth().currentUser.uid + "/Favourites/" + ID);
-            d1.once("value", snapshot => {
-                d1.remove();
-            })
-        });
     });
 
     return (
@@ -68,10 +60,6 @@ const SponsorCard = () => {
                 </div>
                 <div className="d-flex px-4 py-2 bg-lightgrey">
                     <p className="my-auto ti">Time</p>
-                    <div className="ml-auto">
-                        <img src="favorite.svg" height="20px" className={'fv'}/>
-                        <img src="share.svg" height="20px" className="mx-4 sh"/>
-                    </div>
                 </div>
             </div>
                 </div>

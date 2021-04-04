@@ -38,15 +38,15 @@ function Header() {
     });
 
     return (
-        <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
-            <p className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"
+        <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-5" id="header">
+            <p className="h1 text-decoration-none ml-5 my-1 font-weight-bold text-purple cursor-pointer"
                onClick={goToHome}>
                 SponsRoar
             </p>
             <div className="navbar-nav ml-auto mr-5">
-                <p className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
+                <p className="p1 mr-4 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
                    onClick={goToSponseeLogin}>Login</p>
-                <p className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
+                <p className="p1 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer mr-5"
                    onClick={goToSponseeSignUp}>Sign Up</p>
                 <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
                      onClick={goToDashboard}/>

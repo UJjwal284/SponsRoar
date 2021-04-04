@@ -60,12 +60,12 @@ function findSponsors() {
                         <button type="button" className="btn btn-primary font-weight-normal ml-1 pl-5 pr-5">Search
                         </button>
                     </div>
-                    <div className="pb-5 d-flex mt-2">
-                        <div className="bg-white filter mb-3 ml-5">
-                            <p className="mb-0 text-lightgrey p-2">Filter By</p>
-                            <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <div className="form-check pl-3">
-                                <h6 className="ml-4 mt-2">Category</h6>
+                    <div className="pb-5 d-flex mt-2 px-5">
+                        <div className="bg-white filterfsnpsrs mb-3 ml-5 px-4 py-3">
+                            <p className="mb-2 text-lightgrey p-2">Filter By</p>
+                            <hr className="bg-lightgrey my-3"/>
+                            <div className="form-check">
+                                <h6 className="mt-2">Category</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Technology
@@ -89,9 +89,8 @@ function findSponsors() {
                                 </label>
                             </div>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <div className="form-check pl-3">
-                                <h6 className="ml-4 mt-2">Platform</h6>
+                            <div className="form-check">
+                                <h6 className="mt-2">Platform</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Youtube
@@ -111,8 +110,8 @@ function findSponsors() {
                                 </label>
                             </div>
                             <hr className="bg-lightgrey mt-0 mb-0"/>
-                            <div className="form-check pb-1 pl-3">
-                                <h6 className="ml-4 mt-2">Brand</h6>
+                            <div className="form-check pb-1">
+                                <h6 className="mt-2">Brand</h6>
                                 <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                                 <label className="form-check-label " htmlFor="flexCheckDefault">
                                     Redmi
