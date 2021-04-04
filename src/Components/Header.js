@@ -9,12 +9,12 @@ function Header() {
         history.push("/");
     }
 
-    const goToFindSponsors = () => {
-        history.push("/findSponsors");
+    const goToSponseeLogin = () => {
+        history.push("/sponseeLogin");
     }
 
-    const goToFindSponsees = () => {
-        history.push("/findSponsees");
+    const goToSponseeSignUp = () => {
+        history.push("/sponseeSignUp");
     }
 
     const goToDashboard = () => {
@@ -39,17 +39,15 @@ function Header() {
 
     return (
         <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
-            <a className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"
+            <p className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"
                onClick={goToHome}>
                 SponsRoar
-            </a>
+            </p>
             <div className="navbar-nav ml-auto mr-5">
                 <p className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
-                   onClick={goToFindSponsors}>Find
-                    Sponsors</p>
-                <a className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
-                   onClick={goToFindSponsees}>Find
-                    Sponsees</a>
+                   onClick={goToSponseeLogin}>Login</p>
+                <p className="p1 mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
+                   onClick={goToSponseeSignUp}>Sign Up</p>
                 <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
                      onClick={goToDashboard}/>
             </div>
