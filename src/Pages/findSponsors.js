@@ -3,10 +3,9 @@ import './findSponsors.css';
 import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
 import Header1 from "../Components/Header1";
-import SponsorCard from "../Components/sponsorCard";
 import $ from "jquery";
 import Firebase from "../Components/Firebase";
-import Loading from "../Components/Loading";
+import SponsorCard from "../Components/sponsorCard";
 
 function findSponsors() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -47,7 +46,6 @@ function findSponsors() {
 
     return (
         <div className="main">
-            <Loading/>
             <div className={'d1 w-100'}>
                 <Header1>
                     <span>Find Sponsees</span>

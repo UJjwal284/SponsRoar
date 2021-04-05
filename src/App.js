@@ -8,6 +8,7 @@ import sponsorLogin from "./Pages/sponsorLogin";
 import sponseeSignUp from "./Pages/sponseeSignUp";
 import sponseeLogin from "./Pages/sponseeLogin";
 import sponsorDetails from "./Pages/sponsorDetails";
+import SponsorDetails from "./Pages/sponsorDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
 import sponsorDashboard from "./Pages/sponsorDashboard";
 import sponseeDashboard from "./Pages/sponseeDashboard";
@@ -36,6 +37,12 @@ function App() {
                 <Route path="/sponseeDashboard" component={sponseeDashboard}/>
                 <Route path="/addPost" component={addPost}/>
                 <Route path="/setPlatforms" component={setPlatforms}/>
+                <Route path="/post/:id">
+                    <SponsorDetails/>
+                </Route>
+                <Route path="*">
+                    <Home/>
+                </Route>
             </Switch>
         </Router>
     );

@@ -48,12 +48,14 @@ function Header1({children}) {
                      onClick={goToFindSponsees}>{children}</div>
             </div>
             <div className="navbar-nav ml-auto mr-5">
-                <button className="p1 btn btn-light bt1 font-weight-normal" onClick={goToSponsorLogin}>Sponsor Login
-                </button>
-                <button className="p1 btn btn-light bt1 ml-3 font-weight-normal" onClick={goToSponseeLogin}>Sponsee
+                <button className="p1 btn btn-light bt1 font-weight-normal px-4" onClick={goToSponsorLogin}>Sponsor
                     Login
                 </button>
-                <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer" onClick={goToSponsorDashboard}/>
+                <button className="p1 btn btn-light bt1 ml-3 font-weight-normal px-4" onClick={goToSponseeLogin}>Sponsee
+                    Login
+                </button>
+                <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
+                     onClick={goToSponsorDashboard}/>
             </div>
         </div>
     );

@@ -16,11 +16,6 @@ hl {
     background-color: black;
 }
 
-.ca:hover {
-    box-shadow: gray 0 0 5px;
-    cursor: pointer;
-}
-
 .li {
     width: 82%;
 }

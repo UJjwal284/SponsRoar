@@ -1,12 +1,9 @@
-.fv:hover {
-    transform: scale(1.2);
-}
-
-.sh:hover {
-    transform: scale(1.2);
-}
-
 .de {
     font-size: 14px;
     line-height: 1.25;
+}
+
+.clickMe:hover {
+    box-shadow: gray 0 0 5px;
+    cursor: pointer;
 }

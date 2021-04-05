@@ -8,7 +8,7 @@ import Header2 from "../Components/Header2";
 import AlertBox from "../Components/AlertBox";
 import Footer from "../Components/Footer";
 
-function sponsorDetails() {
+function SponsorDetails() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const history = useHistory();
     const goToHome = () => {
@@ -360,4 +360,4 @@ function sponsorDetails() {
     );
 }
 
-export default sponsorDetails;
+export default SponsorDetails;

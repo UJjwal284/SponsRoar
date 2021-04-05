@@ -1,3 +1,7 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.btn-main {
+    font-size: 17px;
+}
