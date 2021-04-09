@@ -16,7 +16,6 @@ function Home() {
                 $('.bt3').show();
             } else {
                 $('.bt3').hide();
-
             }
             $('.lo').hide();
             $('.d1').show();

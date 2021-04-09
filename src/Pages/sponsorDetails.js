@@ -1,25 +1,17 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import $ from "jquery";
 import Firebase, {db} from "../Components/Firebase";
 import './sponsorDetails.css'
-import Loading from "../Components/Loading";
 import Header2 from "../Components/Header2";
 import AlertBox from "../Components/AlertBox";
 import Footer from "../Components/Footer";
 
 function SponsorDetails() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const history = useHistory();
-    const goToHome = () => {
-        history.push("/home");
-    }
+    const {id} = useParams();
 
     $(document).ready(function () {
-        $('.alr').hide();
-        $('.d1').hide();
-        Firebase.database().ref("/posts/" + localStorage.getItem("Item")).once("value").then(function (snapshot) {
-            const key = snapshot.key;
+        Firebase.database().ref("/posts/" + id).once("value").then(function (snapshot) {
             const childData = snapshot.val();
             $('.t1').text(childData['Brand']);
             $('.t2').text(childData['ProductName']);
@@ -30,12 +22,11 @@ function SponsorDetails() {
                 day: 'numeric'
             }));
 
-            if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
-                $('.plb').hide();
-            }
-
             Firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
+                    if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
+                        $('.plb').hide();
+                    }
                     db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
                             $('.followBtn').text('Unfollow');
@@ -45,11 +36,8 @@ function SponsorDetails() {
                     });
                 }
             });
-            $('.lo').hide();
-            $('.d1').show();
         });
 
-        $('.pltc>div').hide();
         db.ref("/posts/" + localStorage.getItem("Item") + "/Platform/").once("value").then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 var key = childSnapshot.key;
@@ -207,7 +195,6 @@ function SponsorDetails() {
 
     return (
         <div className="main">
-            <Loading/>
             <div className={'d1 w-100'}>
                 <Header2/>
                 <AlertBox message={'Login as Sponsee'}/>
@@ -218,34 +205,14 @@ function SponsorDetails() {
                                 <div>
                                     <h6 className={"font-weight-bold text-primary t1 cursor-pointer"}>Brand</h6>
                                     <h4 className={"font-weight- t2"}>Product Name</h4>
-                                    <p className={"mt-3 mb-2 text-lightgrey"}><b>Catagory:</b> Technology</p>
-                                    <p className={"text-lightgrey mb-1"}><b>Platform:</b> Youtube, Facebook, Instagram,
+                                    <p className={"mt-3 mb-2"}><b>Catagory:</b> Technology</p>
+                                    <p className={"mb-1"}><b>Platform:</b> Youtube, Facebook, Instagram,
                                         etc
                                     </p>
-                                    <p className="text-lightgrey mt-3 mr-3 t3">Lorem Ipsum is simply dummy text of the
-                                        printing
-                                        and
-                                        typesetting
-                                        industry.
-                                        Lorem Ipsum has
-                                        been the industry's standard dummy text ever since the 1500s, when an unknown
-                                        printer
-                                        took a
-                                        galley
-                                        of type and scrambled it to make a type specimen book. It has survived not only
-                                        five
-                                        centuries,
-                                        but
-                                        also the leap into electronic typesetting, remaining essentially unchanged.</p>
-
+                                    <p className="mt-3 mr-3 t3">Lorem Ipsum is simply dummy text of the</p>
                                 </div>
-                                <div className={"ml-auto text-right"}>
-                                    <div className={"mr-4"}>
-                                        <img src="favorite.svg" height={18}/>
-                                        <img src="share.svg" height={18} className={"mx-4"}/>
-                                    </div>
-                                    <img className={"mt-4 mb-3 mr-5"} src="logo.png" height="175px"/>
-                                </div>
+                                <img className={"mt-4 mb-3 mr-5 ml-auto text-right"} src={'logo.png'}
+                                     height="175px"/>
                             </div>
                             <div className={'mt-3 mx-auto rounded-lg plb pb-3 pt-2 px-3 text-center'}>
                                 <p className={'h3'}>Platforms</p>
