@@ -13,7 +13,7 @@ class SponsorCard extends Component {
     }
 
     componentDidMount() {
-        const accountRef = firebase.database().ref('posts');
+        const accountRef = firebase.database().ref('posts').orderByChild('CreatedOn');
         accountRef.on('value', (snapshot) => {
             let accounts = snapshot.val();
             let newState = [];

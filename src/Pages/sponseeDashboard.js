@@ -6,7 +6,6 @@ import './sponseeDashboard.css';
 import Header3 from "../Components/Header3";
 import Firebase, {db} from "../Components/Firebase";
 import $ from 'jquery'
-import Loading from "../Components/Loading";
 
 
 function sponseeDashboard() {
@@ -41,8 +40,7 @@ function sponseeDashboard() {
     });
 
     return (
-        <div className="bg-lightgrey vh-100">
-            <Loading/>
+        <div className="bg-lightgrey text-white">
             <div className={'d1'}>
                 <Header3/>
                 <div className={"d-flex m-5"}>

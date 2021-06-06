@@ -15,8 +15,7 @@ class FilterFindSponsor extends Component {
     render() {
         return (
             <div>
-
-                <div className="bg-white filterBox ml-5 px-4">
+                <div className="bg-white filterBox ml-5 px-4 pb-2">
                     <p className="pt-3">Filter By</p>
                     <hr className="bg-lightgrey"/>
                     <h6>Category</h6>

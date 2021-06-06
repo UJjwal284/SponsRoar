@@ -61,9 +61,9 @@ function sponseeLogin() {
 
     return (
         <div className="main vh-100">
-            <div className="d-flex justify-content-center w-100 d3 position-absolute vh-100">
-                <div className="spinner-border text-primary"/>
-            </div>
+            {/*<div className="d-flex justify-content-center w-100 d3 position-absolute vh-100">*/}
+            {/*    <div className="spinner-border text-primary"/>*/}
+            {/*</div>*/}
             <div>
                 <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
                     <p className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"
