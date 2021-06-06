@@ -6,8 +6,7 @@ import './sponsorDashboard.css';
 import Header3 from "../Components/Header3";
 import Firebase, {db} from "../Components/Firebase";
 import $ from 'jquery'
-import Loading from "../Components/Loading";
-import SponsorCard from "../Components/sponsorCard";
+import SponsorCard1 from "../Components/sponsorCard1";
 
 
 function sponsorDashboard() {
@@ -62,7 +61,7 @@ function sponsorDashboard() {
 
     return (
         <div className="main">
-            <Loading/>
+            {/*<Loading/>*/}
             <div className={'d1 w-100'}>
                 <Header3/>
                 <div className={"d-flex m-5 pb-3"}>
@@ -78,7 +77,7 @@ function sponsorDashboard() {
                     <div className={'pl-3 w-75'}>
                         <h3 className={'font-weight-bold'}>Your Posts</h3>
                         <p className={'yhnpas'}>You have not posted any sponsor</p>
-                        <SponsorCard/>
+                        <SponsorCard1/>
                     </div>
                 </div>
                 <Footer/>

@@ -62,7 +62,7 @@ function Header2() {
                 <button className="p1 btn btn-light bt1 ml-3 font-weight-normal" onClick={goToSponseeLogin}>Sponsee
                     Login
                 </button>
-                <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
+                <img width={35} src={"/profile.png"} className="rounded-circle pImage cursor-pointer"
                      onClick={goToSponsorDashboard}/>
             </div>
         </div>

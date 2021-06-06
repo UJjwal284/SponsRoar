@@ -53,9 +53,9 @@ function sponsorLogin() {
 
     return (
         <div className="main vh-100">
-            <div className="d-flex justify-content-center w-100 d3 position-absolute vh-100">
-                <div className="spinner-border text-primary"/>
-            </div>
+            {/*<div className="d-flex justify-content-center w-100 d3 position-absolute vh-100">*/}
+            {/*    <div className="spinner-border text-primary"/>*/}
+            {/*</div>*/}
             <div>
                 <Header/>
                 <AlertBox message={'Password reset email sent'}/>

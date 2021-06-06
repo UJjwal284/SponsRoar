@@ -17,7 +17,6 @@ import setPlatforms from "./Pages/setPlatforms";
 import Home from "./Pages/home";
 
 function App() {
-
     return (
         <Router>
             <section className="container">

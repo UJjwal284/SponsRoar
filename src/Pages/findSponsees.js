@@ -34,14 +34,6 @@ function findSponsees() {
                 // });
                 i++;
             });
-
-            for (let i = 0; i < 5; i++) {
-                if ($('#' + i + ' .un').text() === 'User Name') {
-                    $('#' + i).hide();
-                }
-            }
-            $('.lo').hide();
-            $('.d1').show();
         });
     });
 
@@ -58,30 +50,8 @@ function findSponsees() {
                     <button type="button" className="btn btn-primary font-weight-normal ml-1 pl-5 pr-5">Search</button>
                 </div>
                 <div className="pb-5 d-flex">
-                    <div className="bg-white filter mb-3 mr-0 ml-5">
-                        <p className="mb-0 text-lightgrey p-2">Filter By</p>
-                        <hr className="bg-lightgrey mt-0 mb-0"/>
-                        <div className="form-check">
-                            <h6 className="ml-3 mt-2">Platform</h6>
-                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label className="form-check-label " htmlFor="flexCheckDefault">
-                                Youtube
-                            </label><br/>
-                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label className="form-check-label " htmlFor="flexCheckDefault">
-                                Facebook
-                            </label><br/>
-                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label className="form-check-label " htmlFor="flexCheckDefault">
-                                Instagram
-                            </label><br/>
-                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label className="form-check-label " htmlFor="flexCheckDefault">
-                                Website
-                            </label>
-                        </div>
-                    </div>
-                    <div className="li">
+
+                <div className="li">
                         <SponseeCard/>
                     </div>
                 </div>
