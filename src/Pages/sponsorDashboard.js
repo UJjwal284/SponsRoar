@@ -8,39 +8,37 @@ import Firebase, {db} from "../Components/Firebase";
 import $ from 'jquery'
 import SponsorCard1 from "../Components/sponsorCard1";
 
-
 function sponsorDashboard() {
-
+    const CURRENTUSER = localStorage.getItem('CURRENTUSER');
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const history = useHistory();
     const goToAddPost = () => {
         history.push("/addPost");
     }
 
-    db.ref("sponsor/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
-        const childData = snapshot.val();
-        $('.t1').text(childData['Name']);
-        $('.p1').text(childData['Email']);
-    });
-
     $(document).ready(function () {
-            $('.yhnpas').hide();
-            let i = 0;
-            Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
-                snapshot.forEach(function (childSnapshot) {
-                    var key = childSnapshot.key;
-                    const childData = childSnapshot.val();
-                    if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
-                        $('#' + i + ' .br').text(childData['Brand']);
-                        $('#' + i + ' .pn').text(childData['ProductName']);
-                        $('#' + i + ' .de').text(childData['Description']);
-                        $('#' + i + ' .cat').text('Category: ' + childData['Category']);
-                        $('#' + i + ' .d2').attr('key', key);
-                        $('#' + i + ' .ti').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        }));
+        db.ref("sponsor/" + CURRENTUSER).once("value").then(function (snapshot) {
+            const childData = snapshot.val();
+            $('.t1').text(childData['Name']);
+            $('.p1').text(childData['Email']);
+        });
+        $('.yhnpas').hide();
+        let i = 0;
+        Firebase.database().ref("/posts/").once("value").then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                const key = childSnapshot.key;
+                const childData = childSnapshot.val();
+                if (childData['CreatedBy'] === CURRENTUSER) {
+                    $('#' + i + ' .br').text(childData['Brand']);
+                    $('#' + i + ' .pn').text(childData['ProductName']);
+                    $('#' + i + ' .de').text(childData['Description']);
+                    $('#' + i + ' .cat').text('Category: ' + childData['Category']);
+                    $('#' + i + ' .d2').attr('key', key);
+                    $('#' + i + ' .ti').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    }));
                         i++;
                     }
                 });
@@ -61,13 +59,11 @@ function sponsorDashboard() {
 
     return (
         <div className="main">
-            {/*<Loading/>*/}
             <div className={'d1 w-100'}>
                 <Header3/>
                 <div className={"d-flex m-5 pb-3"}>
                     <div className={"d4 ml-5"}>
                         <div className="bg-danger p-3">
-                            <img src={"profileImage.png"} height={100} className={"float-right"}/>
                             <h5 className={"font-weight-bold t1"}>User Name</h5>
                             <p className={"p1"}>email@email.com</p>
                             <button className={"btn btn-primary mt-3 w-100"}>Edit Profile</button>

@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import firebase from './Firebase';
-import Firebase, {db} from './Firebase';
+import firebase, {db} from './Firebase';
 import './sponsorCard.css'
 import {Link} from "react-router-dom";
 
@@ -14,8 +13,9 @@ class SponsorCard1 extends Component {
     }
 
     componentDidMount() {
+        const CURRENTUSER = localStorage.getItem('CURRENTUSER');
         let brand = "";
-        db.ref("sponsor/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
+        db.ref("sponsor/" + CURRENTUSER).once("value").then(function (snapshot) {
             const childData = snapshot.val();
             brand = childData['Name'];
         });

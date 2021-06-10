@@ -10,6 +10,7 @@ import sponseeLogin from "./Pages/sponseeLogin";
 import sponsorDetails from "./Pages/sponsorDetails";
 import SponsorDetails from "./Pages/sponsorDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
+import SponseeDetails from "./Pages/sponseeDetails";
 import sponsorDashboard from "./Pages/sponsorDashboard";
 import sponseeDashboard from "./Pages/sponseeDashboard";
 import addPost from "./Pages/addPost";
@@ -38,6 +39,9 @@ function App() {
                 <Route path="/setPlatforms" component={setPlatforms}/>
                 <Route path="/post/:id">
                     <SponsorDetails/>
+                </Route>
+                <Route path="/sponsee/:id">
+                    <SponseeDetails/>
                 </Route>
                 <Route path="*">
                     <Home/>

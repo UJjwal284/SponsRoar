@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import './sponsorLogin.css'
 import {useHistory} from "react-router-dom";
@@ -26,7 +25,9 @@ function sponsorLogin() {
         Firebase.auth().signInWithEmailAndPassword(email, password).then(r =>
             db.ref('sponsor/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                 if (snapshot.exists()) {
-                    history.push("/sponsorDashboard")
+                    localStorage.clear();
+                    localStorage.setItem('CURRENTUSER', Firebase.auth().currentUser.uid);
+                    history.push("/sponsorDashboard");
                 } else {
                     alert("Account Not Found");
                     Firebase.auth().signOut();
@@ -46,6 +47,14 @@ function sponsorLogin() {
         })
     }
 
+    const goToHome = () => {
+        history.push("/");
+    }
+
+    const goToSponseeLogin = () => {
+        history.push("/sponseeLogin");
+    }
+
     $(document).ready(function () {
         $('.alr').hide();
         $('.d3').hide();
@@ -57,33 +66,36 @@ function sponsorLogin() {
             {/*    <div className="spinner-border text-primary"/>*/}
             {/*</div>*/}
             <div>
-                <Header/>
+                <div className="navbar navbar-expand-lg navbar-light bg-white shadow-sm" id="header">
+                    <p className="h1 text-decoration-none m-2 ml-5 font-weight-bold text-purple cursor-pointer"
+                       onClick={goToHome}>
+                        SponsRoar
+                    </p>
+                    <div className="navbar-nav ml-auto mr-5">
+                        <button onClick={goToSponseeLogin} className={'btn btn-outline-primary'}>Login as Sponsee
+                            Instead
+                        </button>
+                    </div>
+                </div>
                 <AlertBox message={'Password reset email sent'}/>
-                <div id="panel" className="rounded shadow p-3 bg-white">
-                    <h1 className="font-weight-bold text-center">Sponsor Login</h1>
-                    <hr/>
+                <div id="panel" className="rounded shadow p-3 bg-white text-center p-5">
                     <p className="h5">Hello!</p>
                     <h3 className="h4 font-weight-bold">Welcome Back</h3>
-                    <p className="text-secondary">You are just a step away from your sponsees</p>
-                    <form>
-                        <div className="form-group mt-3">
-                            <input type="email" className="form-control border-dark font-weight-bold"
-                                   aria-describedby="emailHelp" placeholder="Enter email"
-                                   onChange={(e) => setEmail(e.target.value)} value={email}>
-                            </input>
-                        </div>
-                        <div className="form-group mb-1">
-                            <input type="password" className="form-control border-dark font-weight-bold"
-                                   placeholder="Password" onChange={(e) => setPassword(e.target.value)}
-                                   value={password}/>
-                        </div>
-                        <p className="fp text-primary font-weight mb-1 cursor-pointer"
-                           onClick={handleForgotPassword}>Forgot
-                            Password</p>
-                        <button type="submit" className="btn btn-primary w-100 mb-2 mt-0" onClick={handleLogin}>Login
-                        </button>
-                        <p className="h6 cursor-pointer mb-0" onClick={goToSponsorSignUp}>Sign Up Instead</p>
-                    </form>
+                    <input type="email" className="form-control border-dark font-weight-bold w-100 mt-4"
+                           aria-describedby="emailHelp" placeholder="Enter email"
+                           onChange={(e) => setEmail(e.target.value)} value={email}>
+                    </input>
+                    <input type="password" className="form-control border-dark font-weight-bold w-100 mt-3"
+                           placeholder="Password" onChange={(e) => setPassword(e.target.value)}
+                           value={password}/>
+                    <p className="fp text-primary font-weight mb-1 cursor-pointer float-right mt-2"
+                       onClick={handleForgotPassword}>Forgot
+                        Password</p>
+                    <button type="submit" className="btn btn-primary w-100 mb-2 mt-1" onClick={handleLogin}>Login
+                    </button>
+                    <hr/>
+                    <p>Don't have an account?</p>
+                    <p className="text-primary mb-0 cursor-pointer" onClick={goToSponsorSignUp}>Sign Up</p>
                 </div>
                 <Footer/>
             </div>

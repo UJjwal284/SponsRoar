@@ -1,6 +1,6 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
-import Firebase from "./Firebase";
+import Firebase, {db} from "./Firebase";
 import $ from "jquery";
 
 function Header1({children}) {
@@ -31,8 +31,14 @@ function Header1({children}) {
         }
     });
 
-    const goToSponsorDashboard = () => {
-        history.push("/sponsorDashboard");
+    const goToDashboard = () => {
+        db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
+            if (snapshot.exists()) {
+                history.push("/sponseeDashboard");
+            } else {
+                history.push("/sponsorDashboard");
+            }
+        })
     }
 
     return (
@@ -55,7 +61,7 @@ function Header1({children}) {
                     Login
                 </button>
                 <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
-                     onClick={goToSponsorDashboard}/>
+                     onClick={goToDashboard}/>
             </div>
         </div>
     );

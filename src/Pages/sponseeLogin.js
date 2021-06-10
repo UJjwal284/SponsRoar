@@ -31,7 +31,10 @@ function sponseeLogin() {
         event.preventDefault();
         $('.d3').show();
         Firebase.auth().signInWithEmailAndPassword(email, password).then(r =>
-                history.push("/sponseeDashboard"),
+                localStorage.clear(),
+            localStorage.setItem('CURRENTUSER', Firebase.auth().currentUser.uid),
+            history.push("/sponseeDashboard"),
+
             // db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
             //     if (snapshot.exists()) {
             //         history.push("/sponseeDashboard")

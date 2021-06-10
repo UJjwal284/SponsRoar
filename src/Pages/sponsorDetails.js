@@ -11,6 +11,7 @@ function SponsorDetails() {
     const {id} = useParams();
 
     $(document).ready(function () {
+        window.scrollTo({top: 0, behavior: 'smooth'});
         console.log(id);
         Firebase.database().ref("/posts/" + id).once("value").then(function (snapshot) {
             const childData = snapshot.val();
@@ -23,6 +24,12 @@ function SponsorDetails() {
                 day: 'numeric'
             }));
 
+            const createdBy = childData['CreatedBy'];
+            Firebase.database().ref('sponsor/' + createdBy).once("value").then(function (snapshot) {
+                const childData = snapshot.val();
+                $('.sponsorDescription').text(childData['Description']);
+            });
+
             Firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
@@ -31,8 +38,6 @@ function SponsorDetails() {
                     db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
                             $('.followBtn').text('Unfollow');
-                        } else {
-                            $('.alr').show().delay(3000).fadeOut(300);
                         }
                     });
                 }
@@ -46,17 +51,20 @@ function SponsorDetails() {
                 const childData = childSnapshot.val();
                 $('#' + key).show();
                 $('#' + key + ' #p1').text(childData['Value']);
-                db.ref('sponsee/' + Firebase.auth().currentUser.uid + "/platforms/" + key).once("value", snapshot => {
-                    if (snapshot.exists()) {
-                        const childData1 = snapshot.val();
-                        if (parseInt(childData1['Subscribers']) < parseInt(childData['Value'])) {
-                            $('input#in' + key).attr("disabled", true);
-
-                        }
-                    } else {
-                        $('input#in' + key).attr("disabled", true);
+                Firebase.auth().onAuthStateChanged(function (user) {
+                    if (user) {
+                        db.ref('sponsee/' + Firebase.auth().currentUser.uid + "/platforms/" + key).once("value", snapshot => {
+                            if (snapshot.exists()) {
+                                const childData1 = snapshot.val();
+                                if (parseInt(childData1['Subscribers']) < parseInt(childData['Value'])) {
+                                    $('input#in' + key).attr("disabled", true);
+                                }
+                            } else {
+                                $('input#in' + key).attr("disabled", true);
+                            }
+                        })
                     }
-                })
+                });
             });
             $('.lo').hide();
             $('.d1').show();
@@ -95,10 +103,12 @@ function SponsorDetails() {
                                 })
                             }
                         } else {
+                            window.scrollTo({top: 0, behavior: 'smooth'});
                             $('.alr').show().delay(3000).fadeOut(300);
                         }
                     })
                 } else {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                     $('.alr').show().delay(3000).fadeOut(300);
                 }
             });
@@ -115,23 +125,25 @@ function SponsorDetails() {
                                 const key = snapshot.key;
                                 const childData = snapshot.val();
                                 db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
-                                    if (snapshot.exists()) {
-                                        let userRef = db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid);
-                                        userRef.remove().then(r => $('.followBtn').text('Follow'))
-                                    } else {
-                                        db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).set({
-                                            Follow: true
-                                        });
+                                        if (snapshot.exists()) {
+                                            let userRef = db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid);
+                                            userRef.remove().then(r => $('.followBtn').text('Follow'))
+                                        } else {
+                                            db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).set({
+                                                Follow: true
+                                            });
                                             $('.followBtn').text('Unfollow');
                                         }
                                     }
                                 )
                             });
                         } else {
+                            window.scrollTo({top: 0, behavior: 'smooth'});
                             $('.alr').show().delay(3000).fadeOut(300);
                         }
                     })
                 } else {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                     $('.alr').show().delay(3000).fadeOut(300);
                 }
             });
@@ -237,22 +249,12 @@ function SponsorDetails() {
                         </div>
                         <div className={"bg-lightgrey py-2 px-4 t4"}>Posted On: an hour ago</div>
                         <div className={"bg-white mt-3 mb-5 p-3"}>
-                            <button className={"float-right btn btn-primary mr-5 followBtn"}>Follow</button>
-                            <div className={"d-flex mt-2"}>
+                            <button className={"float-right btn btn-primary mr-4 followBtn"}>Follow</button>
+                            <div className={"d-flex mt-2 ml-4"}>
                                 <h5>About </h5>
                                 <h5 className={"text-primary ml-2 t1"}>Brand</h5>
                             </div>
-                            <p className={"mt-3 mb-0"}>Lorem Ipsum is simply dummy text of the printing and
-                                typesetting
-                                industry.
-                                Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer
-                                took a
-                                galley
-                                of type and scrambled it to make a type specimen book. It has survived not only five
-                                centuries,
-                                but
-                                also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p className={"mt-3 mb-0 sponsorDescription text-justify mx-4"}/>
                         </div>
                     </div>
                 </section>

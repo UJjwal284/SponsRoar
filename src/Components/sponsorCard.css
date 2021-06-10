@@ -1,9 +1,16 @@
 .de {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.25;
+    height: 55px;
+    overflow: hidden;
 }
 
 .clickMe:hover {
     box-shadow: gray 0 0 5px;
     cursor: pointer;
+}
+
+.pn {
+    height: 60px;
+    overflow: hidden;
 }
