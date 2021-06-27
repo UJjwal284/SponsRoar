@@ -5,3 +5,7 @@
 .btn-main {
     font-size: 17px;
 }
+
+p {
+    cursor: default;
+}

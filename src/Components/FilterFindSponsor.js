@@ -23,7 +23,7 @@ class FilterFindSponsor extends Component {
 
         return (
             <div>
-                <div className="bg-white filterBox ml-5 px-4 pb-2">
+                <div className="bg-danger filterBox ml-5 px-4 pb-2">
                     <p className="pt-3">Filter By</p>
                     <hr className="bg-lightgrey"/>
                     <h6>Category</h6>

@@ -161,14 +161,14 @@ function SponsorDetails() {
                             <div className={'d-flex'}>
                                 <div>
                                     <h6 className={"font-weight-bold text-primary t1 cursor-pointer"}>Brand</h6>
-                                    <h4 className={"font-weight- t2"}>Product Name</h4>
+                                    <h4 className={"t2 text-justify mr-3"}>Product Name</h4>
                                     <p className={"mt-3 mb-2"}><b>Catagory:</b> Technology</p>
                                     <p className={"mb-1"}><b>Platform:</b> Youtube, Facebook, Instagram,
                                         etc
                                     </p>
-                                    <p className="mt-3 mr-3 t3">Lorem Ipsum is simply dummy text of the</p>
+                                    <p className="mt-3 mr-3 t3 text-justify">Lorem Ipsum is simply dummy text of the</p>
                                 </div>
-                                <img className={"mt-4 mb-3 mr-5 ml-auto text-right"}
+                                <img className={"mt-4 mb-3 mr-4 ml-auto text-right"}
                                      src={'/logo.png'} height={150}/>
                             </div>
                             <div className={'mt-3 mx-auto rounded-lg plb pb-3 pt-2 px-3 text-center'}>

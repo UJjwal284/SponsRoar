@@ -20,7 +20,7 @@ function findSponsors() {
                     <span>Find Sponsees</span>
                 </Header1>
                 <section>
-                    <div className="input-group sb bg-lightgrey pt-2 pb-2">
+                    <div className="input-group sb bg-lightgrey pt-2 pb-2 bg-danger">
                         <input type="search" className="form-control p-4" placeholder="Search for Company & Industry"
                                aria-label="Search"
                                aria-describedby="search-addon"/>
@@ -31,7 +31,7 @@ function findSponsors() {
                         <FilterFindSponsor/>
                         <div className="li">
                             <main>
-                                <section className='container'>
+                                <section className='container pr-5'>
                                     <SponsorCard/>
                                 </section>
                             </main>
