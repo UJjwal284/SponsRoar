@@ -1,0 +1,15 @@
+* {
+    color: black;
+}
+
+.cn1 {
+    background-color: #f8f8f8;
+}
+
+#panel {
+    margin-bottom: 50px;
+}
+
+#sel1, #sel2 {
+    list-style-type: -moz-ethiopic-numeric;
+}

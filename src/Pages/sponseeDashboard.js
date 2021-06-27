@@ -4,12 +4,12 @@ import 'firebase/auth';
 import {useHistory} from "react-router-dom";
 import './sponseeDashboard.css';
 import Header3 from "../Components/Header3";
-import Firebase, {db} from "../Components/Firebase";
+import {db} from "../Components/Firebase";
 import $ from 'jquery'
 
 
 function sponseeDashboard() {
-
+    const CURRENTUSER = localStorage.getItem('CURRENTUSER');
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const history = useHistory();
     const goToSetPlatforms = () => {
@@ -19,14 +19,14 @@ function sponseeDashboard() {
     $(document).ready(function () {
         $('.lo').show();
         $('.d1').hide();
-        db.ref("sponsee/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
+        db.ref("sponsee/" + CURRENTUSER).once("value").then(function (snapshot) {
             const childData = snapshot.val();
             $('.t1').text(childData['Name']);
             $('.p1').text(childData['Email']);
         });
 
         $('.div2>div').hide();
-        db.ref("/sponsee/" + Firebase.auth().currentUser.uid + "/platforms/").once("value").then(function (snapshot) {
+        db.ref("/sponsee/" + CURRENTUSER + "/platforms/").once("value").then(function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 var key = childSnapshot.key;
                 var childData = childSnapshot.val();
@@ -46,7 +46,6 @@ function sponseeDashboard() {
                 <div className={"d-flex m-5"}>
                     <div className={"mb-5 ml-5 div1"}>
                         <div className="bg-danger p-3 ">
-                            <img src={"profileImage.png"} width={100} className={"float-right"}/>
                             <h5 className={"font-weight-bold t1"}>User Name</h5>
                             <p className={"p1"}>email@email.com</p>
                             <button className={"btn btn-primary w-100 mt-2"}>Edit Profile</button>

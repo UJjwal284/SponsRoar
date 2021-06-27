@@ -23,7 +23,6 @@ class SponseeCard extends Component {
                     Facebook: accounts[account].platforms.Facebook.Subscribers,
                     Instagram: accounts[account].platforms.Instagram.Subscribers,
                     Youtube: accounts[account].platforms.Youtube.Subscribers,
-                    Website: accounts[account].platforms.Website.Subscribers,
                 })
             }
             this.setState({
@@ -57,10 +56,6 @@ class SponseeCard extends Component {
                                         <div id={'Instagram'}>
                                             <img height="25px" src="instagramlogo.png"/>
                                             <p>{post.Instagram}</p>
-                                        </div>
-                                        <div id={'Website'}>
-                                            <img height="25px" src="websitelogo.png"/>
-                                            <p>{post.Website}</p>
                                         </div>
                                     </div>
                                 </div>

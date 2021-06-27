@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import {useHistory} from "react-router-dom";
 import $ from "jquery";
 import Firebase from "../Components/Firebase";
+import './setPlatforms.css';
 
 function setPlatforms() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -13,7 +14,7 @@ function setPlatforms() {
         history.push("/sponseeDashboard");
     }
 
-    const setPlatforms = () => {
+    async function setPlatforms() {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
         if ($("input#Youtube").is(':checked')) {
@@ -21,11 +22,21 @@ function setPlatforms() {
                 Subscribers: $('#YoutubeSet #sel1').val(),
                 AvgViewsPerMonth: $('#YoutubeSet #sel2').val()
             })
+        } else {
+            Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Youtube").set({
+                Subscribers: 0,
+                AvgViewsPerMonth: 0
+            })
         }
         if ($("input#Instagram").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Instagram").set({
                 Subscribers: $('#InstagramSet #sel1').val(),
                 AvgViewsPerMonth: $('#InstagramSet #sel2').val()
+            })
+        } else {
+            Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Instagram").set({
+                Subscribers: 0,
+                AvgViewsPerMonth: 0
             })
         }
         if ($("input#Facebook").is(':checked')) {
@@ -33,11 +44,21 @@ function setPlatforms() {
                 Subscribers: $('#FacebookSet #sel1').val(),
                 AvgViewsPerMonth: $('#FacebookSet #sel2').val()
             })
+        } else {
+            Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Facebook").set({
+                Subscribers: 0,
+                AvgViewsPerMonth: 0
+            })
         }
         if ($("input#Twitter").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Twitter").set({
                 Subscribers: $('#TwitterSet #sel1').val(),
                 AvgViewsPerMonth: $('#TwitterSet #sel2').val()
+            })
+        } else {
+            Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Twitter").set({
+                Subscribers: 0,
+                AvgViewsPerMonth: 0
             })
         }
         if ($("input#LinkedIn").is(':checked')) {
@@ -45,8 +66,16 @@ function setPlatforms() {
                 Subscribers: $('#LinkedInSet #sel1').val(),
                 AvgViewsPerMonth: $('#LinkedInSet #sel2').val()
             })
+        } else {
+            Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/LinkedIn").set({
+                Subscribers: 0,
+                AvgViewsPerMonth: 0
+            })
         }
-        goToSponseeDashboard();
+    }
+
+    const submit = () => {
+        setPlatforms().then(goToSponseeDashboard())
     }
 
     $(document).ready(function () {
@@ -61,7 +90,7 @@ function setPlatforms() {
     });
 
     return (
-        <div className="bg-lightgrey vh-100">
+        <div className="cn1">
             <Header/>
             <div id="panel" className="rounded shadow p-3 bg-white ">
                 <h2 className={'text-center font-weight-bold'}>Select Your Platforms</h2>
@@ -107,7 +136,7 @@ function setPlatforms() {
                 </div>
                 <div className={'text-center'}>
                     <input id="btn1" type="submit" value="Set Platforms" className={'btn btn-primary'}
-                           onClick={setPlatforms}/>
+                           onClick={submit}/>
                     <p id="skip" className={'mb-0 mt-1 cursor-pointer'} onClick={goToSponseeDashboard}>Skip</p>
                 </div>
             </div>
