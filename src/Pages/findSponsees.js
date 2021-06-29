@@ -19,7 +19,7 @@ function findSponsees() {
                     <button type="button" className="btn btn-primary font-weight-normal ml-1 pl-5 pr-5">Search</button>
                 </div>
                 <div className="pb-5 d-flex">
-                    <div className="li">
+                    <div className="cl1">
                         <SponseeCard/>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ function SponseeDetails() {
             <Header2/>
             <section className="main py-3 px-5">
                 <div className={"mx-5"}>
-                    <div className={"bg-white p-4"}>
+                    <div className={"bg-white px-5 py-4"}>
                         <img src={"/profileImage.png"} height={"100px"} className={"float-right"}/>
                         <div className={"d-flex"}>
                             <h3 id={'uname'}>User Name</h3>

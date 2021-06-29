@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 import firebase from "firebase";
+import {Icon} from '@iconify/react';
 
 class SponseeCard extends Component {
     constructor(props) {
@@ -23,6 +24,7 @@ class SponseeCard extends Component {
                     Facebook: accounts[account].platforms.Facebook.Subscribers,
                     Instagram: accounts[account].platforms.Instagram.Subscribers,
                     Youtube: accounts[account].platforms.Youtube.Subscribers,
+                    Flag: 'twemoji:flag-for-flag-' + accounts[account].Country
                 })
             }
             this.setState({
@@ -37,12 +39,12 @@ class SponseeCard extends Component {
                 {this.state.posts.map(post =>
                     <Link to={`/sponsee/${post.key}`} className={'text-decoration-none text-dark'}>
                         <div className={'clickMe mb-3'} key={post.key} id={post.key}>
-                            <div className="d-flex p-3 bg-white ca">
+                            <div className="d-flex px-5 py-4 bg-white ca">
                                 <img src="profileImage.png" width="120px" className="mr-3"/>
                                 <div>
                                     <div className="d-flex">
                                         <h4 className="font-weight-bold un">{post.Name}</h4>
-                                        <img height="10px" src="flagIndia.jpg" className="m-2"/>
+                                        <Icon icon={post.Flag} className={'ml-2'}/>
                                     </div>
                                     <div className="d-flex mt-4 li platforms">
                                         <div id={'Youtube'}>

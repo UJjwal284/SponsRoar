@@ -4,7 +4,6 @@ import 'firebase/auth';
 import Firebase, {db} from "../Components/Firebase";
 import {useHistory} from "react-router-dom";
 
-
 function sponsorSignUp() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [name, setName] = useState("");
