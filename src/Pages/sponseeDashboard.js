@@ -6,6 +6,7 @@ import './sponseeDashboard.css';
 import Header3 from "../Components/Header3";
 import {db} from "../Components/Firebase";
 import $ from 'jquery'
+import {Icon} from "@iconify/react";
 
 
 function sponseeDashboard() {
@@ -45,45 +46,40 @@ function sponseeDashboard() {
                 <Header3/>
                 <div className={"d-flex m-5"}>
                     <div className={"mb-5 ml-5 div1"}>
-                        <div className="bg-danger p-3 ">
+                        <div className="bg-white rounded p-3 ">
                             <h5 className={"font-weight-bold t1"}>User Name</h5>
                             <p className={"p1"}>email@email.com</p>
                             <button className={"btn btn-primary w-100 mt-2"}>Edit Profile</button>
                         </div>
-                        <div className={'bg-secondary px-4 pt-3 div2 mb-5 mt-3 pb-3 text-center'}>
+                        <div className={'bg-white rounded px-4 pt-3 div2 mb-5 mt-3 pb-3 text-center'}>
                             <div id="Facebook" className={'d-flex'}>
-                                <img src="facebooklogo.png" width="40px" height="40px" className={'my-auto'}/>
+                                <Icon icon={'logos:facebook'} className={'my-auto'} height={50}/>
                                 <div>
-                                    <p id="p1">32415</p>
-                                    <p id="p2">5437</p>
+                                    <p id="p1">0</p>
                                 </div>
                             </div>
                             <div id="Instagram" className={'d-flex'}>
-                                <img src="instagramlogo.png" width="40px" height="40px"/>
+                                <Icon icon={'logos:instagram-icon'} className={'my-auto'} height={50}/>
                                 <div>
-                                    <p id="p1">32415</p>
-                                    <p id="p2">5437</p>
+                                    <p id="p1">0</p>
                                 </div>
                             </div>
                             <div id="LinkedIn" className={'d-flex'}>
-                                <img src="Linkedinlogo.png" width="40px" height="40px"/>
+                                <Icon icon={'logos:linkedin-icon'} className={'my-auto'} height={50}/>
                                 <div>
-                                    <p id="p1">32415</p>
-                                    <p id="p2">5437</p>
+                                    <p id="p1">0</p>
                                 </div>
                             </div>
                             <div id="Twitter" className={'d-flex'}>
-                                <img src="twitterlogo.png" width="40px" height="40px"/>
+                                <Icon icon={'logos:twitter'} className={'my-auto'} height={50}/>
                                 <div>
-                                    <p id="p1">32415</p>
-                                    <p id="p2">5437</p>
+                                    <p id="p1">0</p>
                                 </div>
                             </div>
                             <div id="Youtube" className={'d-flex'}>
-                                <img src="youtubelogo.png" width="40px" height="40px"/>
+                                <Icon icon={'logos:youtube-icon'} className={'my-auto'} height={50}/>
                                 <div>
-                                    <p id="p1">32415</p>
-                                    <p id="p2">5437</p>
+                                    <p id="p1">0</p>
                                 </div>
                             </div>
                             <button className={'btn btn-primary'} onClick={goToSetPlatforms}>Edit</button>

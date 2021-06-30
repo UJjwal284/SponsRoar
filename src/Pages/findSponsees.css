@@ -37,3 +37,12 @@ hl {
     margin: auto;
     width: 75%;
 }
+
+.photo {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.xx:hover {
+    background-color: #858585;
+}

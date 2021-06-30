@@ -6,13 +6,13 @@ import './sponsorDetails.css'
 import Header2 from "../Components/Header2";
 import AlertBox from "../Components/AlertBox";
 import Footer from "../Components/Footer";
+import {Icon} from "@iconify/react";
 
 function SponsorDetails() {
     const {id} = useParams();
-
     $(document).ready(function () {
         window.scrollTo({top: 0, behavior: 'smooth'});
-        console.log(id);
+        localStorage.setItem('PostID', id);
         Firebase.database().ref("/posts/" + id).once("value").then(function (snapshot) {
             const childData = snapshot.val();
             $('.t1').text(childData['Brand']);
@@ -34,6 +34,7 @@ function SponsorDetails() {
                 if (user) {
                     if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
                         $('.plb').hide();
+                        $('.div3').hide();
                     }
                     db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
@@ -155,20 +156,20 @@ function SponsorDetails() {
             <div className={'d1 w-100'}>
                 <Header2/>
                 <AlertBox message={'Login as Sponsee'}/>
-                <section className="main py-3 px-5">
+                <section className="main py-4 px-5">
                     <div className={"mx-5"}>
-                        <div className={"bg-white p-3"}>
+                        <div className={"bg-white p-4"}>
                             <div className={'d-flex'}>
-                                <div>
+                                <div className={'mr-4'}>
                                     <h6 className={"font-weight-bold text-primary t1 cursor-pointer"}>Brand</h6>
-                                    <h4 className={"t2 text-justify mr-3"}>Product Name</h4>
+                                    <h4 className={"t2 text-justify"}>Product Name</h4>
                                     <p className={"mt-3 mb-2"}><b>Catagory:</b> Technology</p>
                                     <p className={"mb-1"}><b>Platform:</b> Youtube, Facebook, Instagram,
                                         etc
                                     </p>
-                                    <p className="mt-3 mr-3 t3 text-justify">Lorem Ipsum is simply dummy text of the</p>
+                                    <p className="mt-3 t3 text-justify">Lorem Ipsum is simply dummy text of the</p>
                                 </div>
-                                <img className={"mt-4 mb-3 mr-4 ml-auto text-right"}
+                                <img className={"mt-4 mb-3 ml-auto text-right"}
                                      src={'/logo.png'} height={150}/>
                             </div>
                             <div className={'mt-3 mx-auto rounded-lg plb pb-3 pt-2 px-3 text-center'}>
@@ -178,9 +179,9 @@ function SponsorDetails() {
                                         <input type="checkbox" id="inYoutube" className={'position-absolute mx-0'}/>
                                         <label htmlFor="inYoutube">
                                             <div className={'bg-white rounded-lg splt p-2 hspltc text-center'}>
-                                                <img src={'/youtubelogo.png'} height={50}
-                                                     className={'justify-content-center'}/>
-                                                <div className={'mt-1'}>
+                                                <Icon icon={'logos:youtube-icon'} className={'justify-content-center'}
+                                                      width={50}/>
+                                                <div className={'mt-1 align-bottom'}>
                                                     <p id="p1">32415</p>
                                                 </div>
                                             </div>
@@ -190,7 +191,8 @@ function SponsorDetails() {
                                         <input type="checkbox" id="inFacebook" className={'position-absolute mx-0'}/>
                                         <label htmlFor="inFacebook">
                                             <div className={'bg-white rounded-lg splt p-2 hspltc text-center'}>
-                                                <img src={'/facebooklogo.png'} height={50}/>
+                                                <Icon icon={'logos:facebook'} className={'justify-content-center'}
+                                                      width={50}/>
                                                 <div className={'mt-1'}>
                                                     <p id="p1">32415</p>
                                                 </div>
@@ -201,7 +203,8 @@ function SponsorDetails() {
                                         <input type="checkbox" id="inInstagram" className={'position-absolute mx-0'}/>
                                         <label htmlFor="inInstagram">
                                             <div className={'bg-white rounded-lg splt p-2 hspltc text-center'}>
-                                                <img src={'/instagramlogo.png'} height={50}/>
+                                                <Icon icon={'logos:instagram-icon'} className={'justify-content-center'}
+                                                      width={50}/>
                                                 <div className={'mt-1'}>
                                                     <p id="p1">32415</p>
                                                 </div>
@@ -212,7 +215,8 @@ function SponsorDetails() {
                                         <input type="checkbox" id="inLinkedIn" className={'position-absolute mx-0'}/>
                                         <label htmlFor="inLinkedIn">
                                             <div className={'bg-white rounded-lg splt p-2 hspltc text-center'}>
-                                                <img src={'/linkedinlogo.png'} height={50}/>
+                                                <Icon icon={'logos:linkedin-icon'} className={'justify-content-center'}
+                                                      width={50}/>
                                                 <div className={'mt-1'}>
                                                     <p id="p1">32415</p>
                                                 </div>
@@ -223,7 +227,8 @@ function SponsorDetails() {
                                         <input type="checkbox" id="inTwitter" className={'position-absolute mx-0'}/>
                                         <label htmlFor="inTwitter">
                                             <div className={'bg-white rounded-lg splt p-2 hspltc text-center'}>
-                                                <img src={'/twitterlogo.png'} height={50}/>
+                                                <Icon icon={'logos:twitter'} className={'justify-content-center'}
+                                                      width={50}/>
                                                 <div className={'mt-1'}>
                                                     <p id="p1">32415</p>
                                                 </div>
@@ -234,7 +239,8 @@ function SponsorDetails() {
                                         <input type="checkbox" id="inWebsite" className={'position-absolute mx-0'}/>
                                         <label htmlFor="inWebsite">
                                             <div className={'bg-white rounded-lg splt p-2 hspltc text-center'}>
-                                                <img src={'/websitelogo.png'} height={50}/>
+                                                <Icon icon={'whh:website'} className={'justify-content-center'}
+                                                      width={50}/>
                                                 <div className={'mt-1'}>
                                                     <p id="p1">32415</p>
                                                 </div>
@@ -247,14 +253,52 @@ function SponsorDetails() {
                                 </button>
                             </div>
                         </div>
-                        <div className={"bg-lightgrey py-2 px-4 t4"}>Posted On: an hour ago</div>
-                        <div className={"bg-white mt-3 mb-5 p-3"}>
+                        <div className={"bg-lightgrey text-dark py-2 px-4 t4"}>Posted On: an hour ago</div>
+                        <div className={"bg-white mt-3 p-3 div3"}>
                             <button className={"float-right btn btn-primary mr-4 followBtn"}>Follow</button>
                             <div className={"d-flex mt-2 ml-4"}>
                                 <h5>About </h5>
                                 <h5 className={"text-primary ml-2 t1"}>Brand</h5>
                             </div>
                             <p className={"mt-3 mb-0 sponsorDescription text-justify mx-4"}/>
+                        </div>
+                        <div>
+                            <h2 className={'mt-4'}>Applications</h2>
+                            <div className={'bg-white w-100 d-flex'}>
+                                <ul className={'ul1'}>
+                                    <div>
+                                        <input type="radio" className="btn-check invisible" name="options"
+                                               id="option1"
+                                               autoComplete="off"/>
+                                        <label htmlFor="option1">Facebook</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" className="btn-check invisible" name="options" id="option2"
+                                               autoComplete="off"/>
+                                        <label htmlFor="option2">Instagram</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" className="btn-check invisible" name="options" id="option3"
+                                               autoComplete="off"/>
+                                        <label htmlFor="option3">LinkedIn</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" className="btn-check invisible" name="options" id="option4"
+                                               autoComplete="off"/>
+                                        <label htmlFor="option4">Twitter</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" className="btn-check invisible" name="options" id="option5"
+                                               autoComplete="off"/>
+                                        <label htmlFor="option5">Youtube</label>
+                                    </div>
+                                </ul>
+
+
+                                <ul className={'ul2'}>
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </section>

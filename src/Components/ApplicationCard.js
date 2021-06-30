@@ -3,9 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from 'firebase';
 import './sponsorCard.css'
 import {Link} from "react-router-dom";
-import $ from 'jquery'
 
-class SponsorCard extends Component {
+class ApplicationCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,28 +13,16 @@ class SponsorCard extends Component {
     }
 
     componentDidMount() {
-        const accountRef = firebase.database().ref('posts').orderByChild('CreatedOn');
+        const id = localStorage.getItem('PostID');
+        const accountRef = firebase.database().ref('posts/' + id + "/Applicants/Facebook");
         accountRef.on('value', (snapshot) => {
                 let accounts = snapshot.val();
                 let newState = [];
                 for (let account in accounts) {
-                    firebase.database().ref('posts/' + account + '/Platform').on('value', (snap) => {
-                        let acc = snap.val();
-                        for (let accs in acc) {
-                            $('.pp1').text('safas');
-                        }
-                    })
                     newState.push({
                         key: account,
-                        Brand: accounts[account].Brand,
-                        Category: accounts[account].Category,
-                        CreatedOn: new Date(accounts[account].CreatedOn).toLocaleString('en-GB', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
-                        }),
-                        Description: accounts[account].Description,
-                        ProductName: accounts[account].ProductName,
+                        Email: accounts[account].Email,
+                        Name: accounts[account].Name,
                     })
                 }
                 this.setState({
@@ -54,12 +41,6 @@ class SponsorCard extends Component {
                             <div className="d-flex p-3 bg-white d2">
                                 <div className={" "}>
                                     <h6 className="text-primary font-weight-bold br">{post.Brand}</h6>
-                                    <h4 className="font-weight-bold pn">{post.ProductName}</h4>
-                                    <p className="mb-2 mr-3 de text-justify">{post.Description}</p>
-                                    <div className="d-flex">
-                                        <p className="w-50 m-0 cat"><b>Category:</b> {post.Category}</p>
-                                        <p className="w-50 m-0 pp1"><b>Platform: </b></p>
-                                    </div>
                                 </div>
                                 <img src="logo.png" height="130px" className="ml-auto m-3 pl-3"/>
                             </div>
@@ -74,4 +55,4 @@ class SponsorCard extends Component {
     }
 }
 
-export default SponsorCard;
+export default ApplicationCard;

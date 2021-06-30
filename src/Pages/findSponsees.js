@@ -4,7 +4,6 @@ import Footer from "../Components/Footer";
 import SponseeCard from "../Components/sponseeCard";
 import Header1 from "../Components/Header1";
 
-
 function findSponsees() {
     return (
         <div className="main vh-100">

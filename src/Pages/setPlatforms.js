@@ -20,56 +20,46 @@ function setPlatforms() {
         if ($("input#Youtube").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Youtube").set({
                 Subscribers: $('#YoutubeSet #sel1').val(),
-                AvgViewsPerMonth: $('#YoutubeSet #sel2').val()
             })
         } else {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Youtube").set({
                 Subscribers: 0,
-                AvgViewsPerMonth: 0
             })
         }
         if ($("input#Instagram").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Instagram").set({
                 Subscribers: $('#InstagramSet #sel1').val(),
-                AvgViewsPerMonth: $('#InstagramSet #sel2').val()
             })
         } else {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Instagram").set({
                 Subscribers: 0,
-                AvgViewsPerMonth: 0
             })
         }
         if ($("input#Facebook").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Facebook").set({
                 Subscribers: $('#FacebookSet #sel1').val(),
-                AvgViewsPerMonth: $('#FacebookSet #sel2').val()
             })
         } else {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Facebook").set({
                 Subscribers: 0,
-                AvgViewsPerMonth: 0
             })
         }
         if ($("input#Twitter").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Twitter").set({
                 Subscribers: $('#TwitterSet #sel1').val(),
-                AvgViewsPerMonth: $('#TwitterSet #sel2').val()
             })
         } else {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/Twitter").set({
                 Subscribers: 0,
-                AvgViewsPerMonth: 0
             })
         }
         if ($("input#LinkedIn").is(':checked')) {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/LinkedIn").set({
                 Subscribers: $('#LinkedInSet #sel1').val(),
-                AvgViewsPerMonth: $('#LinkedInSet #sel2').val()
             })
         } else {
             Firebase.database().ref("sponsee/" + Firebase.auth().currentUser.uid + "/platforms/LinkedIn").set({
                 Subscribers: 0,
-                AvgViewsPerMonth: 0
             })
         }
     }
@@ -99,7 +89,6 @@ function setPlatforms() {
                     <input id="Youtube" type="checkbox"/>
                     <div id="YoutubeSet" className={'d-flex'}>
                         <input placeholder="Subscribers" id="sel1" className={'form-control mr-3'}/>
-                        <input placeholder="Avg. Views / Month" id="sel2" className={'form-control'}/>
                     </div>
                 </div>
                 <div>
@@ -107,7 +96,6 @@ function setPlatforms() {
                     <input id="Facebook" type="checkbox"/>
                     <div id="FacebookSet" className={'d-flex'}>
                         <input placeholder="Likes" id="sel1" className={'form-control mr-3'}/>
-                        <input placeholder="Avg. Views / Month" id="sel2" className={'form-control'}/>
                     </div>
                 </div>
                 <div>
@@ -115,7 +103,6 @@ function setPlatforms() {
                     <input id="Instagram" type="checkbox"/>
                     <div id="InstagramSet" className={'d-flex'}>
                         <input placeholder="Followers" id="sel1" className={'form-control mr-3'}/>
-                        <input placeholder="Avg. Views / Month" id="sel2" className={'form-control'}/>
                     </div>
                 </div>
                 <div>
@@ -123,7 +110,6 @@ function setPlatforms() {
                     <input id="Twitter" type="checkbox"/>
                     <div id="TwitterSet" className={'d-flex'}>
                         <input placeholder="Subscribers" id="sel1" className={'form-control mr-3'}/>
-                        <input placeholder="Avg. Views / Month" id="sel2" className={'form-control'}/>
                     </div>
                 </div>
                 <div>
@@ -131,7 +117,6 @@ function setPlatforms() {
                     <input id="LinkedIn" type="checkbox"/>
                     <div id="LinkedInSet" className={'d-flex mb-4'}>
                         <input placeholder="Subscribers" id="sel1" className={'form-control mr-3'}/>
-                        <input placeholder="Avg. Views / Month" id="sel2" className={'form-control'}/>
                     </div>
                 </div>
                 <div className={'text-center'}>
