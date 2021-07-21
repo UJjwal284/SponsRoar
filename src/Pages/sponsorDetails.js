@@ -7,6 +7,7 @@ import Header2 from "../Components/Header2";
 import AlertBox from "../Components/AlertBox";
 import Footer from "../Components/Footer";
 import {Icon} from "@iconify/react";
+import ApplicationCard from "../Components/ApplicationCard";
 
 function SponsorDetails() {
     const {id} = useParams();
@@ -293,10 +294,8 @@ function SponsorDetails() {
                                         <label htmlFor="option5">Youtube</label>
                                     </div>
                                 </ul>
-
-
-                                <ul className={'ul2'}>
-
+                                <ul className={'ul2 w-100'}>
+                                    <ApplicationCard/>
                                 </ul>
                             </div>
                         </div>
