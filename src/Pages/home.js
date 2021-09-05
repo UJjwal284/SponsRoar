@@ -6,7 +6,6 @@ import $ from "jquery";
 import Firebase from "../Components/Firebase";
 
 function Home() {
-
     $(document).ready(function () {
         $('.d1').hide();
         Firebase.auth().onAuthStateChanged(function (user) {

@@ -44,9 +44,9 @@ function Header() {
                 SponsRoar
             </p>
             <div className="navbar-nav ml-auto mr-5">
-                <p className="p1 mr-4 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
+                <p className="p1 mr-4 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer font-weight-bold"
                    onClick={goToSponseeLogin}>Login</p>
-                <p className="p1 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer mr-5"
+                <p className="p1 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer mr-5 font-weight-bold"
                    onClick={goToSponseeSignUp}>Sign Up</p>
                 <img width={35} src={"profile.png"} className="rounded-circle pImage cursor-pointer"
                      onClick={goToDashboard}/>
