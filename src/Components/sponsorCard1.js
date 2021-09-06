@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import firebase, {db} from './Firebase';
-import './sponsorCard.css'
 import {Link} from "react-router-dom";
 
 class SponsorCard1 extends Component {

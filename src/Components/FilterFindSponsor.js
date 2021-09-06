@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './sponsorCard.css'
 import $ from 'jquery'
 
 class FilterFindSponsor extends Component {

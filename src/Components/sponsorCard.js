@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from 'firebase';
-import './sponsorCard.css'
 import {Link} from "react-router-dom";
 import $ from 'jquery'
 
