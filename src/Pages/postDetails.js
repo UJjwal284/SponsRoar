@@ -9,9 +9,10 @@ import Footer from "../Components/Footer";
 import {Icon} from "@iconify/react";
 import ApplicationCard from "../Components/ApplicationCard";
 
-function SponsorDetails() {
+function PostDetails() {
     const {id} = useParams();
     $(document).ready(function () {
+        $('#applications-block').hide();
         window.scrollTo({top: 0, behavior: 'smooth'});
         localStorage.setItem('PostID', id);
         Firebase.database().ref("/posts/" + id).once("value").then(function (snapshot) {
@@ -78,6 +79,10 @@ function SponsorDetails() {
                 $('#op' + childSnapshot.key).show();
             });
         });
+
+        $('.t1').click(function () {
+            window.scrollTo({top: $(document).height(), behavior: 'smooth'});
+        })
 
         $('.applyBtn').click(function () {
             Firebase.auth().onAuthStateChanged(function (user) {
@@ -163,7 +168,7 @@ function SponsorDetails() {
                             <div className={'d-flex'}>
                                 <div className={'mr-4'}>
                                     <h6 className={"font-weight-bold text-primary t1 cursor-pointer"}>Brand</h6>
-                                    <h4 className={"t2 text-justify"}>Product Name</h4>
+                                    <h4 className={"t2 text-justify font-weight-bold"}>Product Name</h4>
                                     <p className={"mt-3 mb-2"}><b>Catagory:</b> Technology</p>
                                     <p className={"mb-1"}><b>Platform:</b> Youtube, Facebook, Instagram,
                                         etc
@@ -263,7 +268,7 @@ function SponsorDetails() {
                             </div>
                             <p className={"mt-3 mb-0 sponsorDescription text-justify mx-4"}/>
                         </div>
-                        <div>
+                        <div id={'applications-block'}>
                             <h2 className={'mt-4'}>Applications</h2>
                             <div className={'bg-white w-100 d-flex'}>
                                 <ul className={'ul1'}>
@@ -307,4 +312,4 @@ function SponsorDetails() {
     );
 }
 
-export default SponsorDetails;
+export default PostDetails;

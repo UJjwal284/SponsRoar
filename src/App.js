@@ -7,8 +7,7 @@ import findSponsees from "./Pages/findSponsees";
 import sponsorLogin from "./Pages/sponsorLogin";
 import sponseeSignUp from "./Pages/sponseeSignUp";
 import sponseeLogin from "./Pages/sponseeLogin";
-import sponsorDetails from "./Pages/sponsorDetails";
-import SponsorDetails from "./Pages/sponsorDetails";
+import PostDetails from "./Pages/postDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
 import SponseeDetails from "./Pages/sponseeDetails";
 import sponsorDashboard from "./Pages/sponsorDashboard";
@@ -31,14 +30,14 @@ function App() {
                 <Route path="/sponsorLogin" component={sponsorLogin}/>
                 <Route path="/sponseeLogin" component={sponseeLogin}/>
                 <Route path="/sponseeSignUp" component={sponseeSignUp}/>
-                <Route path="/sponsorDetails" component={sponsorDetails}/>
+                <Route path="/postDetails" component={PostDetails}/>
                 <Route path="/sponseeDetails" component={sponseeDetails}/>
                 <Route path="/sponsorDashboard" component={sponsorDashboard}/>
                 <Route path="/sponseeDashboard" component={sponseeDashboard}/>
                 <Route path="/addPost" component={addPost}/>
                 <Route path="/setPlatforms" component={setPlatforms}/>
                 <Route path="/post/:id">
-                    <SponsorDetails/>
+                    <PostDetails/>
                 </Route>
                 <Route path="/sponsee/:id">
                     <SponseeDetails/>

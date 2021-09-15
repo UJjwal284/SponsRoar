@@ -3,6 +3,8 @@ import './findSponsees.css';
 import Footer from "../Components/Footer";
 import SponseeCard from "../Components/sponseeCard";
 import Header1 from "../Components/Header1";
+import FilterFindSponsor from "../Components/FilterFindSponsor";
+import FilterFindSponsee from "../Components/FilterFindSponsee";
 
 function findSponsees() {
     return (
@@ -18,6 +20,7 @@ function findSponsees() {
                     <button type="button" className="btn btn-primary font-weight-normal ml-1 pl-5 pr-5">Search</button>
                 </div>
                 <div className="pb-5 d-flex">
+                    <FilterFindSponsee/>
                     <div className="cl1">
                         <SponseeCard/>
                     </div>

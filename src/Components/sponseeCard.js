@@ -65,7 +65,7 @@ class SponseeCard extends Component {
                                         <h4 className="font-weight-bold un">{post.Name}</h4>
                                         <Icon icon={post.Flag} className={'ml-2'}/>
                                     </div>
-                                    <div className="d-flex mt-4 li">
+                                    <div className="d-flex mt-4 spli">
                                         <div id={'Youtube'} className={'w-25 text-center bg-lightgrey rounded py-3 xx'}>
                                             <Icon icon={'logos:youtube-icon'} className={'my-auto'} height={25}/>
                                             <p className={'mt-2'}>{post.Youtube}</p>

@@ -30,3 +30,8 @@ p {
     height: 60px;
     overflow: hidden;
 }
+
+.spli div:hover {
+    transition-duration: .5s;
+    background-color: #f1f1f1;
+}
