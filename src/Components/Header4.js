@@ -3,14 +3,14 @@ import {useHistory} from "react-router-dom";
 import Firebase, {db} from "./Firebase";
 import $ from "jquery";
 
-function Header1() {
+function Header4() {
     const history = useHistory();
     const goToHome = () => {
         history.push("/");
     }
 
-    const goToFindSponsees = () => {
-        history.push("/findSponsees");
+    const goToFindSponsors = () => {
+        history.push("/findSponsors");
     }
 
     const goToSponsorLogin = () => {
@@ -51,7 +51,7 @@ function Header1() {
                 <a className="mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
                    onClick={goToHome}>Home</a>
                 <div className="mr-3 mt-auto mb-auto h6 text-decoration-none text-dark cursor-pointer"
-                     onClick={goToFindSponsees}>Find Sponsees
+                     onClick={goToFindSponsors}>Find Sponsors
                 </div>
             </div>
             <div className="navbar-nav ml-auto mr-5">
@@ -68,4 +68,4 @@ function Header1() {
     );
 }
 
-export default Header1;
+export default Header4;

@@ -5,13 +5,12 @@ import SponseeCard from "../Components/sponseeCard";
 import Header1 from "../Components/Header1";
 import FilterFindSponsor from "../Components/FilterFindSponsor";
 import FilterFindSponsee from "../Components/FilterFindSponsee";
+import Header4 from "../Components/Header4";
 
 function findSponsees() {
     return (
         <div className="main vh-100">
-            <Header1>
-                <span>Find Sponsors</span>
-            </Header1>
+            <Header4/>
             <section>
                 <div className="input-group sb bg-lightgrey pt-2 pb-2 mb-2">
                     <input type="search" className="form-control p-4" placeholder="Search for Sponsees"

@@ -18,13 +18,15 @@ class SponsorCard extends Component {
                 let accounts = snapshot.val();
                 let newState = [];
                 for (let account in accounts) {
+                    let plats = "";
                     firebase.database().ref('posts/' + account + '/Platform').on('value', (snap) => {
                         let acc = snap.val();
                         for (let accs in acc) {
-                            $('.pp1').text('safas');
+                            plats += " " + accs + ',';
                         }
                     })
                     newState.push({
+                        plat: plats.slice(0, -1),
                         key: account,
                         Brand: accounts[account].Brand,
                         Category: accounts[account].Category,
@@ -44,6 +46,10 @@ class SponsorCard extends Component {
         )
     }
 
+    handleFilter() {
+
+    }
+
     render() {
         return (
             <div>
@@ -57,7 +63,7 @@ class SponsorCard extends Component {
                                     <p className="mb-2 mr-3 de text-justify">{post.Description}</p>
                                     <div className="d-flex">
                                         <p className="w-50 m-0 cat"><b>Category:</b> {post.Category}</p>
-                                        <p className="w-50 m-0 pp1"><b>Platform: </b></p>
+                                        <p className="w-50 m-0" id={'pltfm1'}><b>Platform:</b>{post.plat}</p>
                                     </div>
                                 </div>
                                 <img src="logo.png" height="130px" className="ml-auto m-3 pl-3"/>

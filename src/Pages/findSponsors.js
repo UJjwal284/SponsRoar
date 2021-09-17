@@ -9,9 +9,7 @@ function findSponsors() {
     return (
         <div className="main">
             <div className={'d1 w-100'}>
-                <Header1>
-                    <span>Find Sponsees</span>
-                </Header1>
+                <Header1/>
                 <section>
                     <div className="input-group sb bg-lightgrey pt-2 pb-2 bg-danger">
                         <input type="search" className="form-control p-4" placeholder="Search for Company & Industry"

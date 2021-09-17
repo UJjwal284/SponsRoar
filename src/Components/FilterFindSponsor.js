@@ -7,7 +7,7 @@ class FilterFindSponsor extends Component {
         super(props);
         this.state = {
             category: ["Technology", "HealthCare"],
-            platforms: ["Platform1", "Platform2", "Platform3", "Platform4", "Platform5"],
+            platforms: ["Facebook", "Instagram", "Website", "Youtube"],
             brands: ["Brand1", "Brand2", "Brand3", "Brand4", "Brand5"],
         }
     }

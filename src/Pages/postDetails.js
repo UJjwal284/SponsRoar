@@ -37,6 +37,7 @@ function PostDetails() {
                     if (childData['CreatedBy'] === Firebase.auth().currentUser.uid) {
                         $('.plb').hide();
                         $('.div3').hide();
+                        $('#applications-block').show();
                     }
                     db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {

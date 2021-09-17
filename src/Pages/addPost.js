@@ -66,8 +66,6 @@ function addPost() {
                 }
             )
         });
-
-
     }
 
     $(document).ready(function () {

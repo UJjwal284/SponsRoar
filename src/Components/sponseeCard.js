@@ -56,7 +56,8 @@ class SponseeCard extends Component {
         return (
             <div>
                 {this.state.posts.map(post =>
-                    <Link to={`/sponsee/${post.key}`} className={'text-decoration-none text-dark'}>
+                    <Link to={{pathname: `/sponsee/${post.key}`, data: post.key}}
+                          className={'text-decoration-none text-dark'}>
                         <div className={'clickMe mb-3'} key={post.key} id={post.key}>
                             <div className="d-flex px-5 py-4 bg-white ca">
                                 <img src="profile.png" height="140px" className="mr-5 ml-3 photo"/>

@@ -20,8 +20,10 @@ class ApplicationCard extends Component {
                 let accounts = snapshot.val();
                 let newState = [];
                 for (let account in accounts) {
+                    console.log(account)
                     firebase.database().ref('sponsee/' + account).on('value', (snap) => {
                         let acc = snap.val();
+                        console.log(acc)
                         newState.push({
                             key: acc,
                             Email: acc.Email,
