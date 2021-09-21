@@ -30,20 +30,11 @@ function sponseeLogin() {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
         $('.d3').show();
-        Firebase.auth().signInWithEmailAndPassword(email, password).then(r =>
-                localStorage.clear(),
-            localStorage.setItem('CURRENTUSER', Firebase.auth().currentUser.uid),
-            history.push("/sponseeDashboard"),
-
-            // db.ref('sponsee/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
-            //     if (snapshot.exists()) {
-            //         history.push("/sponseeDashboard")
-            //     } else {
-            //         alert("Account Not Found");
-            //         Firebase.auth().signOut();
-            //         $('.d3').hide();
-            //     }
-            // })
+        Firebase.auth().signInWithEmailAndPassword(email, password).then(r => {
+                localStorage.clear();
+                localStorage.setItem('CURRENTUSER', Firebase.auth().currentUser.uid);
+                history.push("/sponseeDashboard")
+            }
         );
     }
 

@@ -1,7 +1,8 @@
 import React from "react";
 import {useParams} from "react-router-dom";
 import $ from "jquery";
-import Firebase, {db} from "../Components/Firebase";
+import Firebase from "../Components/Firebase";
+import firebase, {db} from "../Components/Firebase";
 import './sponsorDetails.css'
 import Header2 from "../Components/Header2";
 import AlertBox from "../Components/AlertBox";
@@ -20,16 +21,29 @@ function PostDetails() {
             $('.t1').text(childData['Brand']);
             $('.t2').text(childData['ProductName']);
             $('.t3').text(childData['Description']);
+            $('.pdC').text(childData['Category']);
             $('.t4').text('Posted on: ' + new Date(childData['CreatedOn']).toLocaleString('en-GB', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             }));
 
+            let plats = "";
+            firebase.database().ref('posts/' + id + '/Platform').on('value', (snap) => {
+                let acc = snap.val();
+                for (let accs in acc) {
+                    plats += " " + accs + ',';
+                }
+            })
+            $('.pdSp').text(plats.slice(0, -1))
+
+
             const createdBy = childData['CreatedBy'];
             Firebase.database().ref('sponsor/' + createdBy).once("value").then(function (snapshot) {
                 const childData = snapshot.val();
                 $('.sponsorDescription').text(childData['Description']);
+                $(".bnl").attr("href", 'https://www.' + childData['Website']);
+                $(".bnl").attr('target', "_blank");
             });
 
             Firebase.auth().onAuthStateChanged(function (user) {
@@ -41,7 +55,7 @@ function PostDetails() {
                     }
                     db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).once("value", snapshot => {
                         if (snapshot.exists()) {
-                            $('.followBtn').text('Unfollow');
+                            $('.followBtn').text('Unfollow').css({'background-color': 'white', 'color': 'blue'});
                         }
                     });
                 }
@@ -140,7 +154,10 @@ function PostDetails() {
                                             db.ref("sponsor/" + childData['CreatedBy'] + '/Followers/' + Firebase.auth().currentUser.uid).set({
                                                 Follow: true
                                             });
-                                            $('.followBtn').text('Unfollow');
+                                            $('.followBtn').text('Unfollow').css({
+                                                'background-color': 'white',
+                                                'color': 'blue'
+                                            });
                                         }
                                     }
                                 )
@@ -170,9 +187,8 @@ function PostDetails() {
                                 <div className={'mr-4'}>
                                     <h6 className={"font-weight-bold text-primary t1 cursor-pointer"}>Brand</h6>
                                     <h4 className={"t2 text-justify font-weight-bold"}>Product Name</h4>
-                                    <p className={"mt-3 mb-2"}><b>Catagory:</b> Technology</p>
-                                    <p className={"mb-1"}><b>Platform:</b> Youtube, Facebook, Instagram,
-                                        etc
+                                    <p className={"mt-3 mb-2 d-flex"}><b>Category:</b> <p className={'pdC'}/></p>
+                                    <p className={"mb-1 d-flex"}><b>Platform:</b><p className={'pdSp'}/>
                                     </p>
                                     <p className="mt-3 t3 text-justify">Lorem Ipsum is simply dummy text of the</p>
                                 </div>
@@ -265,46 +281,11 @@ function PostDetails() {
                             <button className={"float-right btn btn-primary mr-4 followBtn"}>Follow</button>
                             <div className={"d-flex mt-2 ml-4"}>
                                 <h5>About </h5>
-                                <h5 className={"text-primary ml-2 t1"}>Brand</h5>
+                                <a className={'bnl'}><h5 className={"text-primary ml-2 t1"}>Brand</h5></a>
                             </div>
                             <p className={"mt-3 mb-0 sponsorDescription text-justify mx-4"}/>
                         </div>
-                        <div id={'applications-block'}>
-                            <h2 className={'mt-4'}>Applications</h2>
-                            <div className={'bg-white w-100 d-flex'}>
-                                <ul className={'ul1'}>
-                                    <div>
-                                        <input type="radio" className="btn-check invisible" name="options"
-                                               id="option1"
-                                               autoComplete="off"/>
-                                        <label htmlFor="option1">Facebook</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" className="btn-check invisible" name="options" id="option2"
-                                               autoComplete="off"/>
-                                        <label htmlFor="option2">Instagram</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" className="btn-check invisible" name="options" id="option3"
-                                               autoComplete="off"/>
-                                        <label htmlFor="option3">LinkedIn</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" className="btn-check invisible" name="options" id="option4"
-                                               autoComplete="off"/>
-                                        <label htmlFor="option4">Twitter</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" className="btn-check invisible" name="options" id="option5"
-                                               autoComplete="off"/>
-                                        <label htmlFor="option5">Youtube</label>
-                                    </div>
-                                </ul>
-                                <ul className={'ul2 w-100'}>
-                                    <ApplicationCard/>
-                                </ul>
-                            </div>
-                        </div>
+                        <ApplicationCard/>
                     </div>
                 </section>
                 <Footer/>

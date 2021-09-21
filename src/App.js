@@ -10,11 +10,11 @@ import sponseeLogin from "./Pages/sponseeLogin";
 import PostDetails from "./Pages/postDetails";
 import sponseeDetails from "./Pages/sponseeDetails";
 import SponseeDetails from "./Pages/sponseeDetails";
-import sponsorDashboard from "./Pages/sponsorDashboard";
 import sponseeDashboard from "./Pages/sponseeDashboard";
 import addPost from "./Pages/addPost";
 import setPlatforms from "./Pages/setPlatforms";
 import Home from "./Pages/home";
+import sponsorDashboard from "./Pages/sponsorDashboard";
 
 function App() {
     return (

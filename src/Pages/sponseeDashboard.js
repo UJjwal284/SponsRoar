@@ -8,7 +8,6 @@ import {db} from "../Components/Firebase";
 import $ from 'jquery'
 import {Icon} from "@iconify/react";
 
-
 function sponseeDashboard() {
     const CURRENTUSER = localStorage.getItem('CURRENTUSER');
     // eslint-disable-next-line react-hooks/rules-of-hooks

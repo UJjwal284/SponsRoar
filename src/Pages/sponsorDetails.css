@@ -27,32 +27,32 @@
     border-bottom: #bebebe 2px solid;
 }
 
-.ul1 {
-    padding: 0;
-    margin: 0;
-    width: 17%;
-    border-right: #6a3ca2 1px solid;
-}
+/*.ul1 {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    width: 17%;*/
+/*    border-right: #6a3ca2 1px solid;*/
+/*}*/
 
-.ul1 label {
-    text-align: center;
-    font-weight: 500;
-    font-size: 30px;
-    width: 100%;
-    margin-bottom: 0;
-    transition-duration: .4s;
-}
+/*.ul1 label {*/
+/*    text-align: center;*/
+/*    font-weight: 500;*/
+/*    font-size: 30px;*/
+/*    width: 100%;*/
+/*    margin-bottom: 0;*/
+/*    transition-duration: .4s;*/
+/*}*/
 
-.ul1 input:checked ~ label {
-    background-color: #6a3ca2;
-    color: white;
-}
+/*.ul1 input:checked ~ label {*/
+/*    background-color: #6a3ca2;*/
+/*    color: white;*/
+/*}*/
 
-.ul1 label:hover {
-    background-color: #8a4ed2;
-    color: white;
-}
+/*.ul1 label:hover {*/
+/*    background-color: #8a4ed2;*/
+/*    color: white;*/
+/*}*/
 
-.ul1 div input {
-    position: absolute;
-}
+/*.ul1 div input {*/
+/*    position: absolute;*/
+/*}*/

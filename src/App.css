@@ -26,12 +26,57 @@ p {
     border-bottom: #bebebe 2px solid;
 }
 
-.pn {
-    height: 60px;
-    overflow: hidden;
-}
-
 .spli div:hover {
     transition-duration: .5s;
     background-color: #f1f1f1;
+}
+
+.plat-sel > div {
+    display: flex;
+    padding: 10px;
+}
+
+.plat-sel * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.d4 {
+    width: 260px;
+}
+
+.spd div {
+    width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.spd div:hover {
+    cursor: pointer;
+    transition-duration: .5s;
+    background-color: #f1f1f1;
+}
+
+.footer {
+    color: black;
+    background: white;
+    width: 100%;
+    padding: 15px 50px;
+}
+
+.spseD {
+    height: 100%;
+}
+
+.spd a:hover {
+    text-decoration: none;
+}
+
+.pdSp {
+    margin-left: 5px;
+}
+
+.pdC {
+    margin-left: 5px;
 }

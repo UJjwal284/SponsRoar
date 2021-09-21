@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from 'firebase';
 import {Link} from "react-router-dom";
-import $ from 'jquery'
 
 class SponsorCard extends Component {
     constructor(props) {
@@ -44,10 +43,6 @@ class SponsorCard extends Component {
                 })
             }
         )
-    }
-
-    handleFilter() {
-
     }
 
     render() {

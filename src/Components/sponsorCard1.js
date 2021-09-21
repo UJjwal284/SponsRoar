@@ -23,7 +23,15 @@ class SponsorCard1 extends Component {
             let newState = [];
             for (let account in accounts) {
                 if (accounts[account].Brand === brand) {
+                    let plats = "";
+                    firebase.database().ref('posts/' + account + '/Platform').on('value', (snap) => {
+                        let acc = snap.val();
+                        for (let accs in acc) {
+                            plats += " " + accs + ',';
+                        }
+                    })
                     newState.push({
+                        plat: plats.slice(0, -1),
                         key: account,
                         Brand: accounts[account].Brand,
                         Category: accounts[account].Category,
@@ -49,14 +57,14 @@ class SponsorCard1 extends Component {
                 {this.state.posts.map(post =>
                     <Link to={`/post/${post.key}`} className={'text-decoration-none text-dark'}>
                         <div className={'clickMe mb-3'} key={post.key} id={post.key}>
-                            <div className="d-flex p-3 bg-white d2">
-                                <div className={"pr-3 "}>
+                            <div className="d-flex p-3 bg-white">
+                                <div className={"pr-3"}>
                                     <h6 className="text-primary font-weight-bold br">{post.Brand}</h6>
-                                    <h4 className="font-weight-bold pn">{post.ProductName}</h4>
+                                    <h4 className="font-weight-bold">{post.ProductName}</h4>
                                     <p className="mb-2 mr-4 de">{post.Description}</p>
                                     <div className="d-flex">
                                         <p className="w-50 m-0 cat"><b>Category:</b> {post.Category}</p>
-                                        <p className="w-50 m-0"><b>Platform:</b> Youtube, Facebook</p>
+                                        <p className="w-50 m-0"><b>Platform:</b> {post.plat}</p>
                                     </div>
                                 </div>
                                 <img src="logo.png" height="130px" className="ml-auto m-3"/>
