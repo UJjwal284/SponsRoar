@@ -193,7 +193,7 @@ function PostDetails() {
                                     <p className="mt-3 t3 text-justify">Lorem Ipsum is simply dummy text of the</p>
                                 </div>
                                 <img className={"mt-4 mb-3 ml-auto text-right"}
-                                     src={'/logo.png'} height={150}/>
+                                     src={'/logo.jpg'} height={150}/>
                             </div>
                             <div className={'mt-3 mx-auto rounded-lg plb pb-3 pt-2 px-3 text-center'}>
                                 <p className={'h3'}>Platforms</p>

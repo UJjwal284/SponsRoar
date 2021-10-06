@@ -61,7 +61,7 @@ class SponsorCard extends Component {
                                         <p className="w-50 m-0" id={'pltfm1'}><b>Platform:</b>{post.plat}</p>
                                     </div>
                                 </div>
-                                <img src="logo.png" height="130px" className="ml-auto m-3 pl-3"/>
+                                <img src="logo.jpg" height="130px" className="ml-auto m-3 pl-3"/>
                             </div>
                             <div className="d-flex px-4 py-2 bg-lightgrey">
                                 <p className="my-auto ti text-black-50" id={'ppp'}>{post.CreatedOn}</p>
