@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Footer from "../Components/Footer";
 import 'firebase/auth';
-import './addPost.css';
 import Header3 from "../Components/Header3";
 import Firebase, {db} from "../Components/Firebase";
 import {useHistory} from "react-router-dom";
@@ -24,12 +23,9 @@ function addPost() {
 // eslint-disable-next-line react-hooks/rules-of-hooks
     const [category, setCategory] = useState("");
 
-
     const submit = () => {
         // eslint-disable-next-line no-restricted-globals
         event.preventDefault();
-        let time = +new Date();
-        let Id = time + Firebase.auth().currentUser.uid;
 
         db.ref("sponsor/" + Firebase.auth().currentUser.uid).once("value").then(function (snapshot) {
             const childData = snapshot.val();
@@ -68,8 +64,13 @@ function addPost() {
         });
     }
 
+    let time = +new Date();
+    let Id = time + Firebase.auth().currentUser.uid;
+
+
     $(document).ready(function () {
         $('.tcp select').hide();
+        $('#upVis').hide();
         $(':checkbox').change(function () {
             if (this.checked) {
                 $('select.' + this.id).show();
@@ -77,7 +78,33 @@ function addPost() {
                 $('select.' + this.id).hide();
             }
         })
+
+        document.getElementById("files").addEventListener("change", function (e) {
+            e.preventDefault();
+            let files = [];
+            files = e.target.files;
+            if (files.length !== 0) {
+                $('#upVis').show();
+                const storage = Firebase.storage().ref('/productImage/' + Id);
+                const upload = storage.put(files[0]);
+                upload.on("state_changed", function progress(snapshot) {
+                        document.getElementById("progress").value = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    },
+
+                    function error() {
+                        document.getElementById("uploading").innerHTML = 'Upload Error!';
+                    },
+
+                    function complete() {
+                        document.getElementById("uploading").innerHTML = 'Upload Complete';
+                    }
+                );
+            } else {
+                alert("No file chosen");
+            }
+        });
     });
+
 
     return (
         <div className="main pb-4">
@@ -85,7 +112,7 @@ function addPost() {
             <form className={"bg-white mx-auto mb-5 p-4 f1 mt-3"}>
                 <p className={"mb-0 p"}>Product Name</p>
                 <input className="form-control" type={"text"} value={productName}
-                       onChange={(e) => setProductName(e.target.value)}/>
+                       onChange={(e) => setProductName(e.target.value)} id={'pn'}/>
                 <select className={"form-control mt-3"} value={category}
                         onChange={(e) => setCategory(e.target.value)}>
                     <option selected>Category</option>
@@ -164,9 +191,15 @@ function addPost() {
                 <p className={"mb-0 p mt-3"}>Product Description</p>
                 <input className="form-control" type={"text"} value={description}
                        onChange={(e) => setDescription(e.target.value)}/>
-                <input type="file" accept="image/*" capture="camera" id="fileUpload"
-                       className={'my-3'}/><br/>
-                <button type="submit" className="btn btn-primary" onClick={submit}>Submit</button>
+
+                <p className={"mb-0 p mt-3 mb-1"}>Upload Product Image</p>
+                <input type="file" accept="image/*" id="files"/>
+                <div id={'upVis'}>
+                    <p id="uploading">Uploading...</p>
+                    <progress value="0" max="100" id="progress" className={'w-100'}/>
+                </div>
+                <button type="submit" className="w-100 btn btn-primary mt-3" id={'submit'} onClick={submit}>Submit
+                </button>
             </form>
             <Footer/>
         </div>

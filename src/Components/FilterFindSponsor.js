@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import $ from 'jquery'
+import {db} from "./Firebase";
 
 class FilterFindSponsor extends Component {
     constructor(props) {
@@ -8,8 +9,24 @@ class FilterFindSponsor extends Component {
         this.state = {
             category: ["Technology", "HealthCare"],
             platforms: ["Facebook", "Instagram", "Website", "Youtube"],
-            brands: ["Brand1", "Brand2", "Brand3", "Brand4", "Brand5"],
+            brandsData: []
         }
+    }
+
+    componentDidMount() {
+        db.ref("sponsor").on('value', (snapshot) => {
+            let data = snapshot.val()
+            let brands = []
+            for (let brand in data) {
+                brands.push({
+                    name: data[brand].Name,
+                    website: data[brand].Website
+                })
+            }
+            this.setState({
+                brandsData: brands
+            })
+        });
     }
 
     render() {
@@ -46,11 +63,11 @@ class FilterFindSponsor extends Component {
                     )}
                     <hr className="bg-lightgrey"/>
                     <h6>Brands</h6>
-                    {this.state.brands.map(element =>
+                    {this.state.brandsData.map(element =>
                         <div className={'pl-1'}>
                             <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                            <label className="form-check-label " htmlFor="flexCheckDefault">
-                                {element}
+                            <label className="form-check-label ml-4" htmlFor="flexCheckDefault">
+                                {element.name}
                             </label>
                         </div>
                     )}

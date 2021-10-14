@@ -80,3 +80,31 @@ p {
 .pdC {
     margin-left: 5px;
 }
+
+.p {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=checkbox] {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.f1 {
+    width: 400px;
+}
+
+.tcp select {
+    width: 100%;
+}
+
+#files {
+    width: 350px;
+}

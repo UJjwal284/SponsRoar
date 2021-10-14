@@ -24,6 +24,16 @@ class SponsorCard extends Component {
                             plats += " " + accs + ',';
                         }
                     })
+
+                    var  URL = "";
+                    const storage = firebase.storage().ref("productImage/" + account);
+                    storage.getDownloadURL().then(function (url) {
+                        URL = url;
+                        console.log(URL)
+                    }).catch(function (error) {
+                    });
+                    console.log(URL)
+
                     newState.push({
                         plat: plats.slice(0, -1),
                         key: account,
@@ -36,6 +46,7 @@ class SponsorCard extends Component {
                         }),
                         Description: accounts[account].Description,
                         ProductName: accounts[account].ProductName,
+                        PostImageURL: URL
                     })
                 }
                 this.setState({
@@ -46,6 +57,8 @@ class SponsorCard extends Component {
     }
 
     render() {
+
+
         return (
             <div>
                 {this.state.posts.map(post =>
@@ -61,7 +74,7 @@ class SponsorCard extends Component {
                                         <p className="w-50 m-0" id={'pltfm1'}><b>Platform:</b>{post.plat}</p>
                                     </div>
                                 </div>
-                                <img src="logo.jpg" height="130px" className="ml-auto m-3 pl-3"/>
+                                <img src={post.PostImageURL} height="130px" className="ml-auto m-3 pl-3"/>
                             </div>
                             <div className="d-flex px-4 py-2 bg-lightgrey">
                                 <p className="my-auto ti text-black-50" id={'ppp'}>{post.CreatedOn}</p>

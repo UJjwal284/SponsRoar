@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import sponsorSignUp from "./Pages/sponsorSignUp";
-import findSponsors from "./Pages/findSponsors";
+import FindSponsors from "./Pages/findSponsors";
 import findSponsees from "./Pages/findSponsees";
 import sponsorLogin from "./Pages/sponsorLogin";
 import sponseeSignUp from "./Pages/sponseeSignUp";
@@ -25,7 +25,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/sponsorSignUp" component={sponsorSignUp}/>
-                <Route path="/findSponsors" component={findSponsors}/>
+                <Route path="/findSponsors" component={FindSponsors}/>
                 <Route path="/findSponsees" component={findSponsees}/>
                 <Route path="/sponsorLogin" component={sponsorLogin}/>
                 <Route path="/sponseeLogin" component={sponseeLogin}/>
